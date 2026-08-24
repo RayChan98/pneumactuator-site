@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductPageTemplate from '../../components/ProductPageTemplate.astro';
+import { products } from '../../data/products';
+
+const p = products.find(x => x.slug === 'linear');
+---
+<Layout title="Linear Pneumatic Actuator | ISO 5211 Pneumatic Actuators | PNEUMACTUATOR" description="Diaphragm and piston linear actuators for globe valves, control valves and damper positioning — precise stroke control with fail-safe options.">
+  <ProductPageTemplate
+    model={p.model}
+    series={p.series}
+    category={p.category}
+    tagline={p.tagline}
+    description={p.description}
+    specs={p.specs}
+    features={p.features}
+    applications={p.applications}
+    faqs={p.faqs}
+    trustPoints={p.trustPoints}
+  >
+  </ProductPageTemplate>
+</Layout>

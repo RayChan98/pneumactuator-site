@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductPageTemplate from '../../components/ProductPageTemplate.astro';
+import { products } from '../../data/products';
+
+const p = products.find(x => x.slug === 'rack-and-pinion');
+---
+<Layout title="Rack & Pinion Pneumatic Actuator | ISO 5211 Pneumatic Actuators | PNEUMACTUATOR" description="Compact double-acting and spring return quarter-turn actuators for ball, butterfly and plug valve automation — ISO 5211 / NAMUR compliant.">
+  <ProductPageTemplate
+    model={p.model}
+    series={p.series}
+    category={p.category}
+    tagline={p.tagline}
+    description={p.description}
+    specs={p.specs}
+    features={p.features}
+    applications={p.applications}
+    faqs={p.faqs}
+    trustPoints={p.trustPoints}
+  >
+  </ProductPageTemplate>
+</Layout>

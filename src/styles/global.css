@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* PNEUMACTUATOR 品牌令牌（2026-08-23 定，工业气动执行器） */
+  --color-navy-950: #0F2A43;   /* 深钢蓝（主色） */
+  --color-navy-900: #14334F;
+  --color-navy-800: #1B4163;
+  --color-navy-700: #23517A;
+  --color-brand-blue: #1D4ED8; /* 阀门蓝（品牌辅色） */
+  --color-cta-orange: #EA580C; /* 转化橙 */
+  --color-night-green: #0D9488;/* 气动青绿（点缀） */
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* sticky header 遮挡锚点时预留空间（Topbar+Header 高约 100px，留余量） */
+  scroll-padding-top: 140px;
+}
+
+body {
+  @apply bg-white text-slate-800 antialiased;
+}

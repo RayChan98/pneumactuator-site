@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductPageTemplate from '../../components/ProductPageTemplate.astro';
+import { products } from '../../data/products';
+
+const p = products.find(x => x.slug === 'spring-return');
+---
+<Layout title="Spring Return Pneumatic Actuator | ISO 5211 Pneumatic Actuators | PNEUMACTUATOR" description="Fail-safe single acting actuators that close or open the valve automatically when air pressure is lost — process safety built in.">
+  <ProductPageTemplate
+    model={p.model}
+    series={p.series}
+    category={p.category}
+    tagline={p.tagline}
+    description={p.description}
+    specs={p.specs}
+    features={p.features}
+    applications={p.applications}
+    faqs={p.faqs}
+    trustPoints={p.trustPoints}
+  >
+  </ProductPageTemplate>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const props = {
+  title: "Quality Assurance & Final Inspection",
+  kw: "pneumatic actuator quality control",
+  desc: "Every PNEUMACTUATOR actuator is torque-tested, leak-tested and documented before it ships. Our QC process is built for importers who cannot afford field failures.",
+  points: [
+    { title: "Torque Test Bench", desc: "Per-unit torque verification on calibrated test benches before packing." },
+    { title: "1,000,000-Cycle Life Testing", desc: "Durability validated on a life test rig to 1,000,000 operations on sample units." },
+    { title: "Air Leak Testing", desc: "Pressure decay and bubble checks verify seal integrity and internal leakage." },
+    { title: "Surface Finish Inspection", desc: "Coating, corrosion protection and marking checked under controlled lighting." },
+    { title: "ISO 9001 Quality System", desc: "Documented procedures, calibration records and traceable inspection data." },
+    { title: "Pre-Shipment Inspection Report", desc: "Per-lot PSI reports and photos shared with your team before dispatch." },
+  ],
+  steps: [
+    { title: "Incoming Material QC", desc: "Castings, shafts, springs and seals verified against spec on arrival." },
+    { title: "In-Line Checks", desc: "Machining, assembly and torque checks at each production stage." },
+    { title: "Final Functional Test", desc: "Torque, leak and stroke verification on every finished unit." },
+    { title: "Pre-Shipment Inspection", desc: "Packing, labeling and documentation review with the PSI report." },
+  ],
+  challenges: [
+    { title: "Field Failures Cost You", desc: "A failed actuator on a valve line stops production and burns trust. Torque and leak testing catch defects before they leave the factory — not after they reach your customer." },
+    { title: "Audits & Compliance", desc: "Importers face their own audits. Documented QC records and ISO 9001-based procedures answer the questions without delay." },
+    { title: "Inconsistent Supplier Quality", desc: "Mixed quality across batches erodes your brand. A documented incoming, in-line and final inspection program levels out the variation." },
+  ],
+  faqs: [
+    { q: "What testing does each actuator go through?", a: "Every finished unit is torque-verified and air-leak tested on the bench, with stroke and mounting dimensions checked before packing. Sample units from each batch are cycled to 1,000,000 operations for durability validation." },
+    { q: "Can you provide inspection reports?", a: "Yes. Per-lot pre-shipment inspection reports and photos are standard, and copies can be requested before dispatch." },
+    { q: "Do you run cycle life tests?", a: "Yes. Representative samples from each production batch are cycled to 1,000,000 operations on our life test rig to validate seal, spring and wear performance." },
+    { q: "How is your quality system organized?", a: "We operate an ISO 9001-based quality management system with documented procedures, calibrated test equipment and traceable inspection records for every lot." },
+  ],
+  products: [
+    { href: "/products/rack-and-pinion/", title: "Rack & Pinion Actuators", desc: "Compact quarter-turn torque" },
+    { href: "/products/scotch-yoke/", title: "Scotch Yoke Actuators", desc: "High torque for large valves" },
+    { href: "/products/spring-return/", title: "Spring Return Actuators", desc: "Fail-safe operation" },
+  ],
+  guides: [
+    { href: "/blog/actuator-torque-calculation/", title: "How to Calculate Actuator Torque" },
+    { href: "/blog/iso-5211-mounting-standard/", title: "ISO 5211 Explained" },
+    { href: "/blog/double-acting-vs-spring-return/", title: "Double Acting vs Spring Return" },
+  ],
+  longtail: ["pneumatic actuator quality control", "actuator torque test", "pneumatic actuator leak test", "actuator factory inspection", "actuator pre-shipment inspection"],
+};
+---
+
+<Layout title="Quality Assurance & Final Inspection | PNEUMACTUATOR" description="Every PNEUMACTUATOR actuator is torque-tested, leak-tested and documented before it ships. Our QC process is built for importers who cannot afford field failures.">
+  <ServicePageTemplate {...props} />
+</Layout>

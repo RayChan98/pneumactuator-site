@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { products } from '../../data/products';
+
+const cards = products.map((p) => ({
+  title: p.model.replace('Pneumatic Actuator', '').trim(),
+  description: p.tagline,
+  href: `/products/${p.slug}/`,
+  tag: p.series,
+}));
+---
+
+<Layout title="Pneumatic Valve Actuators | Rack & Pinion, Scotch Yoke, Spring Return, Linear | PNEUMACTUATOR" description="Full range of industrial pneumatic valve actuators: rack and pinion, scotch yoke, spring return, double acting and linear. ISO 5211 compliant, factory-direct with OEM/ODM support.">
+  <section class="bg-navy-950 text-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <p class="text-sm font-semibold text-night-green">PNEUMATIC ACTUATORS</p>
+      <h1 class="mt-2 text-4xl font-extrabold tracking-tight">Complete Pneumatic Actuator Range</h1>
+      <p class="mt-3 max-w-2xl text-lg text-slate-300">Five actuator families covering every quarter-turn and linear valve automation need — from compact rack and pinion units to high-torque scotch yoke drives.</p>
+    </div>
+  </section>
+
+  <section class="bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {cards.map((p) => <ProductCard {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Not Sure Which Actuator Fits Your Valve?"
+    subtitle="Send us your valve model and torque requirement — we recommend the right actuator and mounting kit within 24 hours."
+  />
+</Layout>

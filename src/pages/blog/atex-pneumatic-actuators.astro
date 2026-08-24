@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostTemplate from '../../components/BlogPostTemplate.astro';
+
+const props = {
+  title: 'ATEX Pneumatic Actuators: Explosion-Proof Valve Automation Explained',
+  category: 'Technology Guide',
+  date: '2026-08-20',
+  readTime: 10,
+  author: 'Ray Chan',
+  toc: [
+    { id: 'snapshot', label: 'The Snapshot' },
+    { id: 'what-is-atex', label: 'What ATEX Means for Valve Automation' },
+    { id: 'why-pneumatic', label: 'Why Pneumatic Actuators Fit Hazardous Areas' },
+    { id: 'zones', label: 'ATEX Zones 0, 1 and 2: Where the Risk Lives' },
+    { id: 'equipment-categories', label: 'Equipment Categories and the II 2G Marking' },
+    { id: 'certification', label: 'Certification Requirements: What to Ask For' },
+    { id: 'accessories', label: 'The Electrical Interface: Solenoids, Switches and Positioners' },
+    { id: 'selection', label: 'Selecting an ATEX Actuator: Practical Checks' },
+    { id: 'fail-safe', label: 'Fail-Safe Logic and Process Safety' },
+    { id: 'bottom-line', label: 'The Bottom Line' },
+  ],
+  related: [
+    { href: '/blog/pneumatic-vs-electric-actuator/', title: 'Pneumatic vs Electric Actuator: Which Drives Your Valve?', readTime: 11 },
+    { href: '/blog/actuator-accessories-guide/', title: 'Solenoid Valves and Limit Switches: Accessories Guide', readTime: 9 },
+    { href: '/blog/double-acting-vs-spring-return/', title: 'Double Acting vs Spring Return: Fail-Safe Logic', readTime: 9 },
+  ],
+};
+---
+
+<Layout title="ATEX Pneumatic Actuators: Explosion-Proof Valve Automation Explained | PNEUMACTUATOR" description="ATEX pneumatic actuators explained: zones 0-2, equipment categories, the II 2G marking, gas groups, temperature classes and certification requirements for hazardous area valve automation.">
+  <BlogPostTemplate {...props}>
+
+    <!-- Blog Intro 引言 -->
+    <p class="text-lg leading-relaxed"><strong>An explosive atmosphere is not a rare event on a process plant. In a Zone 1 area it can exist for between 10 and 1000 hours every year.</strong> That is why every piece of equipment bolted to the pipework must carry its own protection story. Valve automation sits right at that boundary. The actuator is the moving part that opens and closes the valve. On many skids it mounts inches from the process connection, in the same atmosphere as the line itself.</p>
+    <p class="text-lg leading-relaxed">This guide explains why pneumatic actuation is a natural fit for hazardous areas. It covers ATEX zones and equipment categories. It explains what a II 2G marking actually tells you. It also lists what to check before you order an ATEX actuator package. The principles here are general engineering knowledge. Your site classification, gas group and temperature class must always come from the process engineer responsible for the plant.</p>
+    <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
+
+    <h2 id="snapshot">The Snapshot</h2>
+    <ul>
+      <li>ATEX zones describe how often an explosive atmosphere is present. Zone 0 means over 1000 hours a year, Zone 1 means 10 to 1000 hours, and Zone 2 means under 10 hours. Dust zones run 20, 21 and 22 on the same logic.</li>
+      <li>A pneumatic actuator body carries no electrical energy in its drive, so it removes the most common ignition source in valve automation. The electrical risk sits in the accessories.</li>
+      <li>The II 2G marking means Group II surface equipment, Category 2 (suitable for Zone 1) and gas atmospheres. Dust atmospheres use the D suffix instead of G.</li>
+      <li>Temperature class T1-T6 caps the hottest surface the equipment may reach. T4 at 135 degrees C and T6 at 85 degrees C are common reference points.</li>
+      <li>Certification is per equipment design, not per site. The plant operator matches the certified package to the zone, gas group and T-class of the location.</li>
+    </ul>
+
+    <h2 id="what-is-atex">What ATEX Means for Valve Automation</h2>
+    <p>ATEX comes from the French phrase ATmosphères EXplosibles. It is the EU framework that controls equipment placed on the market for use in explosive atmospheres, currently under Directive 2014/34/EU. The same design logic appears worldwide under the IECEx scheme and in national rules such as the US and Canadian Class and Division systems.</p>
+    <p>An explosive atmosphere is a mixture of flammable gas, vapor, mist or dust with air that can ignite under the right conditions. A valve skid does not create the atmosphere; the process does. What the skid must do is prove that none of its own equipment can ignite that atmosphere during normal operation. It must also stay safe during expected faults. For the highest categories, that includes rare faults.</p>
+    <p>For the plant operator this translates into two documents. One is an area classification drawing that divides the site into zones. The other is a list of certified equipment allowed in each zone. The actuator package has to fit that list. <strong>Standard industrial actuators are not rated for hazardous areas</strong>, which is why ATEX-rated versions are specified as a separate option for these projects.</p>
+
+    <h2 id="why-pneumatic">Why Pneumatic Actuators Fit Hazardous Areas</h2>
+    <p>The core reason is simple. A pneumatic actuator converts compressed air into torque. Air at a typical 2 to 8 bar pushes pistons. The pistons turn the pinion or yoke. <strong>There are no motor windings, no brushes, no arcing contacts and no electronics inside the drive.</strong> Without electrical energy, the drive itself has no electrical ignition source to manage.</p>
+    <p>Compare that with an electric actuator, where a motor, controller and wiring must all be engineered so they cannot ignite the atmosphere. It is possible, and it is done every day, but it adds weight, cost and complexity. The full trade-off between the two technologies is covered in our <a href="/blog/pneumatic-vs-electric-actuator/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">pneumatic vs electric actuator comparison</a>.</p>
+    <h3>What still needs attention</h3>
+    <p>Pneumatic is not a magic word. The moving parts generate friction heat, so the hottest surface of the actuator must stay below the temperature class of the atmosphere. The body material matters for mechanical impact. Hard-anodized aluminum is the standard choice for our AT-series actuators. The material pairing with the specific atmosphere should be confirmed with the supplier. Plastic or non-metallic parts can build static charge, and the electrical accessories still need their own certification.</p>
+    <p>There is also the air itself. Compressed air that is wet or dirty is a common cause of field failures. Moisture can freeze at the exhaust and stall the actuator. Debris can score the seals. For hazardous duty, the supply should follow a defined air quality class such as <strong>ISO 8573-1</strong>. Buyers searching for an "explosion proof actuator" are usually looking for this: a certified pneumatic package with a certified electrical interface.</p>
+
+    <h2 id="zones">ATEX Zones 0, 1 and 2: Where the Risk Lives</h2>
+    <p>Area classification divides the plant into zones by how long an explosive atmosphere is likely to exist. It follows standards such as IEC 60079-10-1 for gas and IEC 60079-10-2 for dust. The typical figures below are widely used in classification practice and should be treated as guidance, not as a substitute for the plant's own study.</p>
+    <table>
+      <thead>
+        <tr><th>Zone</th><th>Atmosphere presence (typical)</th><th>Where it is found</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Zone 0 (gas)</td><td>Over 1000 hours per year</td><td>Inside storage tanks, vapor spaces of vessels, closed process systems</td></tr>
+        <tr><td>Zone 1 (gas)</td><td>10 to 1000 hours per year</td><td>Pump rooms, sampling points, flanges opened routinely</td></tr>
+        <tr><td>Zone 2 (gas)</td><td>Under 10 hours per year</td><td>Outdoor flange areas, valve stations where leaks are contained and brief</td></tr>
+        <tr><td>Zone 20 / 21 / 22 (dust)</td><td>Continuous / likely / unlikely</td><td>Silos, mills, bagging lines, dust collection systems</td></tr>
+      </tbody>
+    </table>
+    <h3>Why the zone number matters for the actuator</h3>
+    <p>The zone sets the equipment category. Zone 0 needs Category 1 equipment, Zone 1 needs Category 2, and Zone 2 needs Category 3. <strong>A package certified for Zone 1 is not automatically acceptable in a Zone 0 location.</strong> Specifying it there is a compliance failure, not a paperwork detail.</p>
+
+    <h2 id="equipment-categories">Equipment Categories and the II 2G Marking</h2>
+    <p>ATEX equipment carries a marking that compresses a lot of information. For surface industry, the marking starts with the Ex symbol, followed by the group, the category and the atmosphere type.</p>
+    <table>
+      <thead>
+        <tr><th>Marking</th><th>Category</th><th>Suitable for</th><th>Protection level</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>II 1G</td><td>Category 1</td><td>Zone 0 gas</td><td>Very high (two independent means of protection)</td></tr>
+        <tr><td>II 2G</td><td>Category 2</td><td>Zone 1 gas</td><td>High (safe with a single fault)</td></tr>
+        <tr><td>II 3G</td><td>Category 3</td><td>Zone 2 gas</td><td>Normal (safe in normal operation)</td></tr>
+        <tr><td>II 1D / 2D / 3D</td><td>Categories 1-3</td><td>Zones 20 / 21 / 22 dust</td><td>Same logic for dust atmospheres</td></tr>
+      </tbody>
+    </table>
+    <p>So II 2G reads as: Group II (surface industry, not mining), Category 2 (suitable for Zone 1), G (gas atmosphere). A complete marking plate also shows the protection concept, such as Ex d or Ex ia. It lists the gas group (IIA, IIB or IIC) and the temperature class (T1 to T6). The newer marking format adds the equipment protection level, Gb or Db.</p>
+    <h3>Gas groups and temperature classes</h3>
+    <p>Gas groups rank how hard it is to ignite a gas. IIA is the least demanding, with propane as a typical reference. IIB sits in the middle, with ethylene. IIC is the most demanding, with hydrogen and acetylene as typical references. A solenoid certified for IIB must not be used where IIC is required.</p>
+    <p>Temperature classes cap the surface temperature. T1 means the surface stays below 450 degrees C. T2 caps it at 300, T3 at 200, T4 at 135, and T5 at 100 degrees C. T6 is the strictest, at 85 degrees C. The chosen class must sit below the auto-ignition temperature of the atmosphere. <strong>T4 is a common practical requirement in gas service</strong>; T6 serves the most sensitive atmospheres.</p>
+
+    <h2 id="certification">Certification Requirements: What to Ask For</h2>
+    <p>Certification is not a sticker. Under ATEX, a notified body assesses the equipment design against the directive, and the manufacturer issues a Declaration of Conformity. Under the IECEx scheme the assessment is recognized internationally, and many plants accept either route. The certificate, the marking and the accompanying documents travel with the equipment.</p>
+    <p><strong>The scope of certification is the whole assembly.</strong> The actuator body, the solenoid valve, the limit switch box, the positioner, the cabling and the junction boxes each play a role. If the parts come from different suppliers, every part needs its own certification, and the completed assembly needs an assessment that the combination is valid.</p>
+    <p>The ATEX certification covers the equipment design, not the site conditions. What to request from the supplier:</p>
+    <ul>
+      <li><strong>Declaration of Conformity</strong> for the package or each certified component</li>
+      <li><strong>Certificate copies</strong> showing the marking, protection concept, gas group and temperature class</li>
+      <li><strong>The instruction manual</strong> with any special conditions for safe use</li>
+      <li><strong>Nameplate data</strong> that matches the certificate, installed and legible</li>
+    </ul>
+    <p>PNEUMACTUATOR supplies ATEX-certified versions for oil and gas and hazardous area applications, and certification documents are provided with each unit. The class depends on your site. Confirm the zone, the gas group and the temperature class. State whether the valve and accessories must be certified as a set. Standard units are not rated for hazardous areas and should not be installed there without the ATEX option.</p>
+
+    <h2 id="accessories">The Electrical Interface: Solenoids, Switches and Positioners</h2>
+    <p>In practice, the electrical accessories are where the ignition risk concentrates. A pneumatic actuator without a solenoid is rare in automated service. The solenoid is the component that lets the control system decide when the valve moves. It is electrical by definition.</p>
+    <h3>Ex d: contain the event</h3>
+    <p>Flameproof (Ex d) enclosures are built to withstand an internal explosion and prevent it from spreading to the outside atmosphere. The enclosure is heavy, and the flame paths are machined to exact tolerances. It is a proven approach for solenoids and switch boxes in gas service.</p>
+    <h3>Ex ia: remove the energy</h3>
+    <p>Intrinsic safety (Ex ia) limits the electrical energy in the circuit to a level below what the atmosphere can ignite, even under fault conditions. The equipment is lighter, and live maintenance is practical in many cases. It requires an associated certified barrier on the safe side of the loop.</p>
+    <p>Both approaches are legitimate and widely installed. The choice depends on the control system architecture, the loop design and the plant's own standards. Limit switch boxes and positioners follow the same logic: mechanical micro-switches and inductive sensors need their protection concept, and positioner feedback electronics need theirs.</p>
+    <p>The role of each component, including NAMUR mounting per VDI/VDE 3845, is covered in our <a href="/blog/actuator-accessories-guide/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">actuator accessories guide</a>.</p>
+
+    <h2 id="selection">Selecting an ATEX Actuator: Practical Checks</h2>
+    <p>Work through these checks in order, and write the answers into the inquiry. Missing information at the inquiry stage is the most common reason an ATEX package is quoted late or quoted wrong.</p>
+    <ul>
+      <li><strong>Zone and category.</strong> Zone 0 needs Category 1, Zone 1 needs Category 2, and Zone 2 needs Category 3. Do not assume the zone from the valve size.</li>
+      <li><strong>Gas group.</strong> IIA, IIB or IIC from the material safety data sheet of the process fluid.</li>
+      <li><strong>Temperature class.</strong> The T-class must stay below the auto-ignition temperature, with margin.</li>
+      <li><strong>Temperature range.</strong> The actuator rating must cover the site extremes, from winter startup to summer peak.</li>
+      <li><strong>Accessories as a set.</strong> Solenoid, switch box and positioner, each certified and matched to the same zone, group and T-class.</li>
+      <li><strong>Air supply.</strong> Clean, dry, filtered air to a defined quality class; wet air is a common cause of actuator failure in the field.</li>
+      <li><strong>Documentation.</strong> DoC, certificates and manual must arrive with the goods, and the nameplate must match.</li>
+    </ul>
+    <p>Choosing an ATEX pneumatic actuator starts with the zone, not the price. Alongside the hazardous area requirements, the package still has to do its primary job: deliver the valve torque. Sizing an ATEX actuator is the same sizing exercise as for a standard unit, just with a certified bill of materials. Send us the zone, gas group, temperature class, valve model and air supply pressure. We can quote a matched package, including our <a href="/products/rack-and-pinion/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">AT-series rack and pinion actuators</a> with ATEX options.</p>
+
+    <h2 id="fail-safe">Fail-Safe Logic and Process Safety</h2>
+    <p>In hazardous service, the question is not only whether the valve moves, but what it does when the air supply disappears. Spring return actuators use stored spring energy to drive the valve to a defined position. That position is typically closed for fuel or process isolation. It is open for vent and relief duty. <strong>That is why spring return versions dominate emergency shutdown and blowdown service.</strong></p>
+    <p>Double acting actuators hold their position when air is lost. They do not fail safe on air loss. Whether holding is acceptable is a decision for the plant's safety philosophy and the hazard study, not for the supplier. The difference between the two designs, and how fail positions are specified, is covered in our <a href="/blog/double-acting-vs-spring-return/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">double acting vs spring return guide</a>.</p>
+    <p>One practical note: the fail position is part of the certified package specification. If the plant requires fail-closed behavior, the spring set, the solenoid and the control philosophy must be specified together, not bolted on after commissioning.</p>
+
+    <h2 id="bottom-line">The Bottom Line</h2>
+    <p>ATEX pneumatic actuators work because the physics is on their side. A pneumatic drive contains no electrical energy. The actuator itself removes the most common ignition source in valve automation. The remaining risk lives in the electrical accessories, and the certification lives in the package as a whole.</p>
+    <p>Specify in this order: the zone (which sets the equipment category), the gas group, the temperature class and the operating temperature range. Then confirm the accessories are certified as a set, the air supply is clean and dry, and the documentation travels with the hardware. <strong>A pneumatic actuator with the right marking, the right T-class and a certified solenoid is a dependable piece of explosion-safe valve automation.</strong> A package assembled without the paperwork is a liability, no matter how well it moves the valve.</p>
+    <p>Have a valve to automate in a hazardous area? Send us your zone, gas group, temperature class and valve details, and our engineers will quote a certified package within 24 hours.</p>
+  </BlogPostTemplate>
+</Layout>

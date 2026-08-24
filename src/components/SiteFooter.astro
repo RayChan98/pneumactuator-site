@@ -1,0 +1,73 @@
+---
+import { ui } from '../i18n/ui';
+const lang = 'en';
+const D = ui[lang];
+
+const productLinks = [
+  { href: '/products/rack-and-pinion/', label: 'Rack & Pinion' },
+  { href: '/products/scotch-yoke/', label: 'Scotch Yoke' },
+  { href: '/products/spring-return/', label: 'Spring Return' },
+  { href: '/products/double-acting/', label: 'Double Acting' },
+];
+const companyLinks = [
+  { href: '/services/', label: 'Services' },
+  { href: '/industries/', label: 'Industries' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/about/', label: 'About Us' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<footer class="bg-navy-950 text-slate-300">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+    <div class="grid gap-10 md:grid-cols-4">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-2">
+          <img src="/logo/logo-horizontal-light.svg" alt="PNEUMACTUATOR" class="h-8 w-auto" />
+        </a>
+        <p class="mt-4 text-sm leading-relaxed text-slate-400">
+          Industrial pneumatic valve actuator manufacturer. Factory-direct rack and pinion, scotch yoke and spring return actuators for distributors and integrators.
+        </p>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">{D.products}</h3>
+        <ul class="mt-4 space-y-2">
+          {productLinks.map((l) => (
+            <li><a href={l.href} class="text-sm transition hover:text-white">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">Explore</h3>
+        <ul class="mt-4 space-y-2">
+          {companyLinks.map((l) => (
+            <li><a href={l.href} class="text-sm transition hover:text-white">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white">{D.getInTouch}</h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li>Email: cj226144@gmail.com</li>
+          <li>WhatsApp: +86 137 1086 0663</li>
+          <li>Guangzhou, China</li>
+        </ul>
+        <button type="button" data-quote-open
+          class="mt-4 inline-block rounded-lg bg-cta-orange px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
+        >{D.getQuote}</button>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
+      © {new Date().getFullYear()} PNEUMACTUATOR. All rights reserved.
+    </div>
+  </div>
+</footer>

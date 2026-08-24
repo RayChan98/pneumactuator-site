@@ -1,0 +1,53 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+
+const posts = [
+  { title: 'Pneumatic Actuator Guide 2026: Complete Buyer Manual for Valve Automation', href: '/blog/pneumatic-actuator-guide/', meta: 'Technology Guide · 16 min' },
+  { title: 'Rack and Pinion vs Scotch Yoke: Which Actuator for Your Valve', href: '/blog/rack-and-pinion-vs-scotch-yoke/', meta: 'Comparison · 9 min' },
+  { title: 'Double Acting vs Spring Return Pneumatic Actuators: Key Differences', href: '/blog/double-acting-vs-spring-return/', meta: 'Comparison · 8 min' },
+  { title: 'Actuator Torque Calculation: How to Size a Pneumatic Actuator Correctly', href: '/blog/actuator-torque-calculation/', meta: 'Engineering Guide · 11 min' },
+  { title: 'ISO 5211 Mounting Standard Explained: Actuator to Valve Interface', href: '/blog/iso-5211-mounting-standard/', meta: 'Standards Guide · 9 min' },
+  { title: 'Pneumatic Butterfly Valve Actuator Selection: A Practical Guide', href: '/blog/butterfly-valve-actuator-selection/', meta: 'Selection Guide · 9 min' },
+  { title: 'Spring Return Actuator Working Principle: Fail-Safe Explained', href: '/blog/spring-return-working-principle/', meta: 'Technology Guide · 8 min' },
+  { title: 'Pneumatic Actuator Maintenance Guide: Keep Your Valve Automation Reliable', href: '/blog/actuator-maintenance-guide/', meta: 'Maintenance Guide · 9 min' },
+  { title: 'ATEX Pneumatic Actuators: Explosion-Proof Valve Automation Explained', href: '/blog/atex-pneumatic-actuators/', meta: 'Technology Guide · 10 min' },
+  { title: 'Pneumatic vs Electric Actuator: How to Choose', href: '/blog/pneumatic-vs-electric-actuator/', meta: 'Comparison · 8 min' },
+  { title: 'Actuator Accessories Guide: Solenoid Valves, Limit Switches and More', href: '/blog/actuator-accessories-guide/', meta: 'Buying Guide · 8 min' },
+  { title: 'Pneumatic Ball Valve Actuator Sizing: Matching Torque to Valve Class', href: '/blog/ball-valve-actuator-sizing/', meta: 'Selection Guide · 9 min' },
+];
+---
+
+<Layout title="Ray Chan | Actuator Engineer & Author | PNEUMACTUATOR" description="Ray Chan writes the PNEUMACTUATOR engineering guides on pneumatic actuator selection, torque calculation and valve automation.">
+  <section class="bg-navy-950 text-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div class="flex items-center gap-6">
+        <span class="grid h-20 w-20 place-items-center rounded-full bg-brand-blue text-2xl font-bold text-white">RC</span>
+        <div>
+          <p class="text-sm font-semibold text-night-green">AUTHOR</p>
+          <h1 class="mt-1 text-4xl font-extrabold tracking-tight">Ray Chan</h1>
+          <p class="mt-2 text-slate-300">Actuator engineer & technical writer at PNEUMACTUATOR</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div class="max-w-3xl space-y-4 text-base leading-relaxed text-slate-600">
+        <p>Ray Chan works on pneumatic actuator design and valve automation at the PNEUMACTUATOR factory in Wenzhou, China. He writes the engineering guides on this site — torque calculation, actuator selection and fail-safe logic — for valve distributors and automation integrators who need practical, numbers-first information.</p>
+      </div>
+      <h2 class="mt-12 text-2xl font-extrabold text-navy-950">All Articles</h2>
+      <div class="mt-6 divide-y divide-slate-200 border-t border-slate-200">
+        {posts.map((p) => (
+          <a href={p.href} class="group flex items-baseline justify-between gap-4 py-4">
+            <span class="font-semibold text-navy-950 group-hover:text-brand-blue">{p.title}</span>
+            <span class="shrink-0 text-sm text-slate-400">{p.meta}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

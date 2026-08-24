@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostTemplate from '../../components/BlogPostTemplate.astro';
+
+const props = {
+  title: 'Rack and Pinion vs Scotch Yoke Actuator: Which One for Your Valve?',
+  category: 'Comparison',
+  date: '2026-08-23',
+  readTime: 10,
+  author: 'Ray Chan',
+  toc: [
+    { id: 'snapshot', label: 'The Snapshot' },
+    { id: 'rack-pinion-basics', label: 'What Is a Rack and Pinion Actuator?' },
+    { id: 'scotch-yoke-basics', label: 'What Is a Scotch Yoke Actuator?' },
+    { id: 'torque-curves', label: 'Torque Curves: Where Each Design Wins' },
+    { id: 'comparison', label: 'Rack and Pinion vs Scotch Yoke: Key Differences' },
+    { id: 'when-rack-pinion', label: 'When to Choose Rack and Pinion' },
+    { id: 'when-scotch-yoke', label: 'When to Choose Scotch Yoke' },
+    { id: 'costs', label: 'Cost Comparison and Total Cost of Ownership' },
+    { id: 'faq', label: 'Quick Answers' },
+    { id: 'bottom-line', label: 'The Bottom Line' },
+  ],
+  related: [
+    { href: '/blog/pneumatic-actuator-guide/', title: 'Pneumatic Actuator Guide 2026', readTime: 16 },
+    { href: '/blog/double-acting-vs-spring-return/', title: 'Double Acting vs Spring Return', readTime: 9 },
+    { href: '/blog/iso-5211-mounting-standard/', title: 'ISO 5211 Explained: Mounting Standard', readTime: 8 },
+  ],
+};
+---
+
+<Layout title="Rack and Pinion vs Scotch Yoke Actuator: Which One for Your Valve? | PNEUMACTUATOR" description="Rack and pinion vs scotch yoke pneumatic actuators: torque curves, size range, cycle speed, air consumption and cost compared. Find out which mechanism fits your valve class, from DN15 ball valves to DN1200 pipeline duty.">
+  <BlogPostTemplate {...props}>
+    <p class="text-lg leading-relaxed">An undersized actuator fails in the worst way. The valve refuses to break open when the process needs it. Or it fails to seat, and product leaks past a closed line. <strong>A rack and pinion unit pushed onto a large butterfly valve stalls at breakout torque. A scotch yoke bolted to a small ball valve wastes space, air and budget.</strong> Both mechanisms rotate a valve 90°, but they deliver torque on very different curves. That difference often decides which one survives your application.</p>
+    <p class="text-lg leading-relaxed">This guide compares rack and pinion and scotch yoke pneumatic actuators across torque profile, size range, cycle speed, air consumption and cost. You will learn how each mechanism produces rotation, where the two torque curves diverge, and how to match the mechanism to your valve class. PNEUMACTUATOR builds both designs. The AT series rack and pinion covers 8 Nm to 4000+ Nm. The AW series scotch yoke reaches 200,000+ Nm. This comparison covers the full practical range rather than one product family.</p>
+    <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
+
+    <h2 id="snapshot">The Snapshot</h2>
+    <ul>
+      <li>Rack and pinion actuators deliver <strong>roughly constant torque across the 90° stroke</strong>; scotch yoke actuators deliver their highest torque at 0° and 90°, where most valves need breakout and seating force.</li>
+      <li>Typical rack and pinion output spans <strong>8 Nm to 4000+ Nm</strong>, covering ball and butterfly valves from about DN15 to DN300.</li>
+      <li>Typical scotch yoke output spans <strong>100 Nm to 200,000+ Nm</strong>, sized for large butterfly, ball and pipeline valves from about DN200 to DN1200.</li>
+      <li>Rack and pinion bodies are hard-anodized aluminum and light enough for one-person handling; scotch yoke bodies are cast ductile iron and can weigh hundreds of kilograms at the top of the range.</li>
+      <li>Both designs mount on ISO 5211 interfaces and accept NAMUR VDI/VDE 3845 accessories, so the mounting pattern is rarely the deciding factor.</li>
+    </ul>
+
+    <h2 id="rack-pinion-basics">What Is a Rack and Pinion Actuator?</h2>
+    <p>A rack and pinion actuator converts linear piston motion into rotary output with a gear set. Two pistons carry racks with machined teeth that drive a central pinion gear. When air enters, the pistons move apart and the pinion turns the output shaft 90°. Because the pinion has a fixed radius, the output torque stays roughly constant through the stroke.</p>
+    <p>The mechanism is compact, symmetric and light, which is why it dominates valve automation at small and medium sizes. A typical aluminum unit weighs a few kilograms, needs no special lifting gear, and cycles fast. On skids and in valve trains, that footprint saves real money on frames and supports.</p>
+    <p>PNEUMACTUATOR AT series units run on 2-8 bar supply. They deliver 8 Nm to 4000+ Nm and rotate 90° with adjustable travel stops at ±5°. The hard-anodized EN AC-44300 aluminum body is rated for <strong>1,000,000+ cycles</strong>. Standard temperature range is -20°C to +80°C, with options to -40°C and +150°C. Spring return versions add a spring cartridge that returns the valve to a fail-safe position when air is lost. That works well wherever the required spring torque stays manageable. See the full range on our <a href="/products/rack-and-pinion/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">rack and pinion actuator page</a>.</p>
+
+    <h2 id="scotch-yoke-basics">What Is a Scotch Yoke Actuator?</h2>
+    <p>A scotch yoke actuator converts linear motion into rotation with a sliding yoke instead of gears. A piston pushes a roller along a slot in the yoke, and the changing lever arm produces rotation. The geometry matters. The lever arm is longest at the stroke ends and shortest near mid-stroke. The mechanism delivers <strong>maximum torque at 0° and 90° and lower torque around 45°</strong>.</p>
+    <p>That profile lines up with the torque demand of most quarter-turn valves. They need high force to break a seat open. They also need force to seat a ball or butterfly disc closed. PNEUMACTUATOR AW series units run on 3-10 bar supply. They deliver 100 Nm to 200,000+ Nm. Cast ductile iron or carbon steel bodies handle heavy service. They suit valve classes from about DN200 to DN1200, with a standard temperature range of -20°C to +120°C.</p>
+    <p>Yoke actuators are heavier and larger than rack and pinion units at the same torque. At high torque classes, however, they are often the only practical pneumatic option. See the range on our <a href="/products/scotch-yoke/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">scotch yoke actuator page</a>.</p>
+
+    <h2 id="torque-curves">Torque Curves: Where Each Design Wins</h2>
+    <p>A quarter-turn valve does not demand constant torque. Seated closed, it needs breakout torque to unseat. Through the middle of the stroke the running torque drops. As the disc or ball approaches the seat again, the torque requirement climbs. An actuator that cannot clear the peak at the ends will stall or leak, regardless of its average rating.</p>
+    <p>The two mechanisms handle this demand differently:</p>
+    <table>
+      <thead>
+        <tr><th>Stroke position</th><th>Valve demand</th><th>Rack and pinion</th><th>Scotch yoke</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Closed (breakout)</td><td>Peak</td><td>Constant</td><td>Peak</td></tr>
+        <tr><td>Mid-stroke</td><td>Lower</td><td>Constant</td><td>Lower</td></tr>
+        <tr><td>Closing (seating)</td><td>Higher</td><td>Constant</td><td>Peak</td></tr>
+      </tbody>
+    </table>
+    <p>This is why a scotch yoke can use a smaller bore than a rack and pinion sized for the same breakout torque. <strong>It does not carry peak torque through the whole stroke</strong>. It is also why a rack and pinion that meets a valve's rated torque on paper can still stall. Its constant output may sit below the breakout demand at the stroke ends.</p>
+    <p>Sizing margins follow from the same logic. Most sizing guides apply a <strong>25-50% margin on double acting torque</strong>. Spring return gets a larger margin, because spring torque and friction are harder to predict. Our <a href="/blog/actuator-torque-calculation/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">actuator torque calculation guide</a> walks through the math with worked examples.</p>
+
+    <h2 id="comparison">Rack and Pinion vs Scotch Yoke: Key Differences</h2>
+    <p>The table below summarizes the practical differences. Figures marked typical reflect common product ranges rather than a specific catalog.</p>
+    <table>
+      <thead>
+        <tr><th>Factor</th><th>Rack and Pinion</th><th>Scotch Yoke</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Torque profile</td><td>Roughly constant across the stroke</td><td>Highest at 0° and 90°, lower mid-stroke</td></tr>
+        <tr><td>Output range (typical)</td><td>8 to 4000+ Nm</td><td>100 to 200,000+ Nm</td></tr>
+        <tr><td>Valve size class</td><td>DN15 to DN300</td><td>DN200 to DN1200</td></tr>
+        <tr><td>Weight and size</td><td>Compact, light, aluminum</td><td>Large, heavy, ductile iron</td></tr>
+        <tr><td>Cycle speed</td><td>Fast, often under one second at rated pressure</td><td>Slower on large units, several seconds typical</td></tr>
+        <tr><td>Air consumption</td><td>Higher per unit of torque</td><td>Lower per cycle at high torque</td></tr>
+        <tr><td>Mounting</td><td>ISO 5211, NAMUR VDI/VDE 3845</td><td>ISO 5211, NAMUR</td></tr>
+        <tr><td>Best fit</td><td>Ball, butterfly and plug valves; fast cycling; tight spaces</td><td>Large butterfly and pipeline valves; high pressure drop; ESD duty</td></tr>
+      </tbody>
+    </table>
+    <p>An overlap zone exists around DN200 to DN300. Within it, both mechanisms can drive the same valve, and the decision shifts to torque profile, weight, air supply and price. A distributor stocking both lines can quote either and still be technically correct, which is why the application details matter more than the mechanism name.</p>
+    <p>For integrators and distributors, the practical question is which series to standardize on for which valve class. Keep rack and pinion for process skids and small packages. Use scotch yoke for mains and large tanks. That avoids carrying oversized aluminum or undersized iron on site. It also simplifies spares: one seal kit family per series instead of a mixed bin.</p>
+
+    <h2 id="when-rack-pinion">When to Choose Rack and Pinion</h2>
+    <p>Choose rack and pinion when the valve is small to medium and the torque demand fits its constant output. Ball valves up to roughly DN200, butterfly valves up to roughly DN300 and most plug valves sit comfortably in this range. The constant curve also makes control behavior predictable for modulating duty.</p>
+    <p>The mechanism also wins where speed or space dominates. Dosing skids that cycle in under a second favor it. So do valve trains inside cabinets. Retrofits with limited headroom above the pipe also favor the compact aluminum body. Installation stays at hand tools and one technician, which keeps site cost low on multi-valve packages.</p>
+    <p>Spring return rack and pinion units cover fail-safe duty efficiently at small sizes, because the spring set stays compact. When air is lost, the spring drives the valve to its safe position. It works within the same 90° travel, with no extra mechanism in the torque path.</p>
+
+    <h2 id="when-scotch-yoke">When to Choose Scotch Yoke</h2>
+    <p>Choose scotch yoke when the valve is large and the peak torque demand sits at the ends of travel. Large butterfly valves above roughly DN300, big ball valves, and pipeline valves under high pressure differentials are the classic applications. Oil and gas terminals, water and wastewater mains, power plants, mining and desalination all fit this profile.</p>
+    <p>Emergency shutdown duty is a natural fit. A valve that must close against high line pressure needs seating torque at the end of travel, exactly where the yoke produces its peak. <strong>At DN600 and above, breakout torque commonly runs into the tens of thousands of Nm, and only yoke geometry delivers it efficiently with pneumatic power.</strong></p>
+    <p>Expect a heavier install. Ductile iron bodies and large bores mean lifting gear on site, and cycle times land in the seconds range rather than fractions of a second. Air consumption per cycle tends to be lower than an equivalent rack and pinion class, which matters on plants that meter compressed air.</p>
+
+    <h2 id="costs">Cost Comparison and Total Cost of Ownership</h2>
+    <p>The mechanism choice changes purchase price, rigging cost and the air bill. The ranges below are typical market indications, not quotes; ask your supplier for series-specific pricing.</p>
+    <table>
+      <thead>
+        <tr><th>Cost item</th><th>Rack and Pinion</th><th>Scotch Yoke</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Unit price, small class (up to about 1,000 Nm)</td><td>$150 to $1,200 typical</td><td>$600 to $3,000 typical; yokes below 500 Nm are uncommon</td></tr>
+        <tr><td>Unit price, large class (10,000+ Nm)</td><td>Rarely offered in rack lines</td><td>$3,000 to $40,000+ typical</td></tr>
+        <tr><td>Installation and rigging</td><td>Light, hand tools, one technician</td><td>Heavy, lifting gear often required</td></tr>
+        <tr><td>Air consumption</td><td>Higher per unit of torque</td><td>Lower per cycle at high torque</td></tr>
+        <tr><td>Maintenance</td><td>Gear lubrication and seal checks</td><td>Sliding surface and seal checks</td></tr>
+        <tr><td>5-year total cost</td><td>Lower below about DN200</td><td>Lower per Nm above about DN300</td></tr>
+      </tbody>
+    </table>
+    <p>At the crossover zone, <strong>torque profile, air supply and weight matter more than the purchase price</strong>. Buying factory direct removes distributor margin on both series, and volume pricing depends on MOQ and series configuration. It pays to send a valve list rather than a single model when you ask for quotes.</p>
+
+    <h2 id="faq">Quick Answers</h2>
+    <h3>1. Which is better, rack and pinion or scotch yoke?</h3>
+    <p>Neither is better in general. Rack and pinion fits compact, fast, small and medium valves; scotch yoke fits large valves where breakout and seating torque dominate. The mechanism should follow the valve class and the torque profile, not preference.</p>
+    <h3>2. Why does a scotch yoke deliver more torque at the ends?</h3>
+    <p>Because the lever arm is longest at 0° and 90° and shortest near 45°. The same piston force produces more torque when the arm is long. That is why the output peaks where valves need breakout and seating force.</p>
+    <h3>3. Can a rack and pinion actuator drive a large butterfly valve?</h3>
+    <p>Up to a point. Rack lines typically cover butterfly valves to about DN300. Beyond that, the constant torque profile forces a larger bore, more air and a heavier unit, and a scotch yoke becomes the economical choice. Check the actual breakout torque of your valve, not just the size.</p>
+    <h3>4. Do scotch yoke actuators use less air?</h3>
+    <p>Typically yes per cycle at high torque classes. The yoke is not carrying peak torque through the whole stroke, so it can be sized with a smaller bore. Exact consumption depends on sizing, pressure and cycle frequency, so ask for the air consumption figure per cycle in the datasheet.</p>
+
+    <h2 id="bottom-line">The Bottom Line</h2>
+    <p>Match the mechanism to the valve class and the torque profile. <strong>Rack and pinion for compact, fast, small to medium valves; scotch yoke for large valves where breakout and seating torque dominate.</strong> Both mount on ISO 5211 interfaces and accept NAMUR accessories. Both come in double acting and spring return. PNEUMACTUATOR builds both series across 8 Nm to 200,000+ Nm of output. Send us your valve model, pressure class and air supply details, and we will recommend a torque-matched actuator rather than a one-size catalog pick.</p>
+  </BlogPostTemplate>
+</Layout>

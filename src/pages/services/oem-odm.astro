@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const props = {
+  title: "OEM & ODM Pneumatic Actuator Manufacturing",
+  kw: "oem pneumatic actuator",
+  desc: "Build a pneumatic actuator line under your own brand. We engineer, manufacture and ship to your specification — from torque and stroke to materials, nameplate and packaging.",
+  points: [
+    { title: "Private Label Manufacturing", desc: "Your brand, your nameplate, your box — our production line. Full private-label support for valve distributors, integrators and OEMs." },
+    { title: "Custom Torque & Stroke", desc: "Torque output matched to your valve spec, with adjustable travel stops and stroke settings configured per project." },
+    { title: "Material Options", desc: "Anodized aluminum bodies for standard service, cast iron options for heavy-duty and high-cycle applications." },
+    { title: "Custom Accessories & Config", desc: "NAMUR solenoid valves, positioners, limit switches and manual overrides assembled and tested as a complete unit." },
+    { title: "OEM Actuator Production", desc: "Volume production with in-process QC — each unit is tested for torque, stroke and air leakage before it ships." },
+  ],
+  steps: [
+    { title: "Share Your Specification", desc: "Send drawings, target torque, stroke angle, supply pressure or an existing sample for review." },
+    { title: "Drawing Review & Quotation", desc: "Engineering feedback within 24 hours — design-for-manufacturing notes and a formal quotation." },
+    { title: "Sample & Approval", desc: "We build a sample with your branding and test data for approval before production." },
+    { title: "Volume Production & Ship", desc: "Mass production with in-process QC, final inspection and consolidated shipping with export documentation." },
+  ],
+  challenges: [
+    { title: "Brand Differentiation", desc: "Off-the-shelf actuators all look alike. Custom nameplates, paint, accessories and packaging let your line stand out in a crowded market." },
+    { title: "Spec Gaps", desc: "Vague torque or supply-pressure specs lead to wrong sizing and rework. We help you turn a rough idea into a concrete bill of materials and test plan." },
+    { title: "Compliance & Documentation", desc: "Importers need CE, material certificates and test reports. We engineer with compliance in mind and provide the documentation your market requires." },
+  ],
+  faqs: [
+    { q: "What is the MOQ for OEM projects?", a: "MOQ depends on the level of customization. Standard-size actuators with your branding typically start at 50-100 units per model, with sample runs available for approval before mass production." },
+    { q: "How long does a typical order take?", a: "Standard parts ship in 7-15 days. OEM orders with custom branding, nameplates or configuration run 2-4 weeks depending on volume and customization." },
+    { q: "Can you customize torque and stroke?", a: "Yes. We match torque output to your valve spec — adjusting bore size, spring sets and air pressure range — and set travel stops for your required stroke angle." },
+    { q: "What quality documentation do you provide?", a: "ISO 9001 quality system, CE compliance, per-lot test reports (torque, stroke, leakage) and material certificates. ATEX-rated options can be arranged per project." },
+  ],
+  products: [
+    { href: "/products/rack-and-pinion/", title: "Rack & Pinion Actuators", desc: "Compact quarter-turn for ball and butterfly valves" },
+    { href: "/products/scotch-yoke/", title: "Scotch Yoke Actuators", desc: "High torque for heavy-duty valve service" },
+    { href: "/products/spring-return/", title: "Spring Return Actuators", desc: "Fail-safe duty for critical processes" },
+  ],
+  guides: [
+    { href: "/blog/pneumatic-actuator-guide/", title: "Pneumatic Actuator Guide" },
+    { href: "/blog/iso-5211-mounting-standard/", title: "ISO 5211 Mounting Standard" },
+    { href: "/blog/actuator-torque-calculation/", title: "Actuator Torque Calculation" },
+  ],
+  longtail: ["oem pneumatic actuator", "private label pneumatic actuator", "custom pneumatic actuator", "white label valve actuator", "pneumatic actuator manufacturer"],
+};
+---
+
+<Layout title="OEM & ODM Pneumatic Actuator Manufacturing | PNEUMACTUATOR" description="Build a pneumatic actuator line under your own brand. We engineer, manufacture and ship to your specification — from torque and stroke to materials, nameplate and packaging.">
+  <ServicePageTemplate {...props} />
+</Layout>

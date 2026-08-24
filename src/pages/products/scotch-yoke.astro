@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductPageTemplate from '../../components/ProductPageTemplate.astro';
+import { products } from '../../data/products';
+
+const p = products.find(x => x.slug === 'scotch-yoke');
+---
+<Layout title="Scotch Yoke Pneumatic Actuator | ISO 5211 Pneumatic Actuators | PNEUMACTUATOR" description="High-torque scotch yoke actuators for large quarter-turn valves — increased torque at end positions where it is needed most.">
+  <ProductPageTemplate
+    model={p.model}
+    series={p.series}
+    category={p.category}
+    tagline={p.tagline}
+    description={p.description}
+    specs={p.specs}
+    features={p.features}
+    applications={p.applications}
+    faqs={p.faqs}
+    trustPoints={p.trustPoints}
+  >
+  </ProductPageTemplate>
+</Layout>

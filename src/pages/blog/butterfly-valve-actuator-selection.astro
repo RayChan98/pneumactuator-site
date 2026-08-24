@@ -1,0 +1,152 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostTemplate from '../../components/BlogPostTemplate.astro';
+
+const props = {
+  title: 'Pneumatic Actuator for Butterfly Valve: Selection Guide',
+  category: 'Buying Guide',
+  date: '2026-08-21',
+  readTime: 11,
+  author: 'Ray Chan',
+  toc: [
+    { id: 'snapshot', label: 'The Snapshot' },
+    { id: 'torque-characteristics', label: 'Butterfly Valve Torque Characteristics' },
+    { id: 'eccentric-designs', label: 'Concentric vs Double vs Triple Eccentric' },
+    { id: 'size-torque', label: 'Actuator Selection by Valve Size' },
+    { id: 'safety-factor', label: 'The Safety Factor' },
+    { id: 'actuator-type', label: 'Rack and Pinion or Scotch Yoke?' },
+    { id: 'fail-safe', label: 'Double Acting vs Spring Return' },
+    { id: 'accessories', label: 'Accessories: Limit Switches and Solenoid Valves' },
+    { id: 'installation-examples', label: 'Installation Examples' },
+    { id: 'checklist', label: 'Final Selection Checklist' },
+  ],
+  related: [
+    { href: '/blog/actuator-torque-calculation/', title: 'How to Calculate Pneumatic Actuator Torque', readTime: 12 },
+    { href: '/blog/actuator-accessories-guide/', title: 'Solenoid Valves and Limit Switches: Accessories Guide', readTime: 9 },
+    { href: '/blog/iso-5211-mounting-standard/', title: 'ISO 5211 Explained: Mounting Standard', readTime: 8 },
+  ],
+};
+---
+
+<Layout title="Pneumatic Actuator for Butterfly Valve: Selection Guide | PNEUMACTUATOR" description="Sizing a pneumatic actuator for a butterfly valve? Covers butterfly valve torque characteristics, concentric vs double vs triple eccentric designs, common torque ranges by DN, safety factors and the accessories you need.">
+  <BlogPostTemplate {...props}>
+    <!-- Blog Intro 引言 -->
+    <p class="text-lg leading-relaxed"><strong>The failure mode is quiet: the actuator stalls at 70 degrees, the butterfly disc never seats, and the line keeps flowing when it should be closed. Undersized actuators on butterfly valves are one of the most common field problems in valve automation — usually because the buyer sized from a torque chart that ignored the valve's pressure class or seat design.</strong> A butterfly valve looks like an easy quarter-turn duty, but its torque curve has a shape that catches people out: the highest figure is usually at the closed position, and a second, smaller peak appears partway through the stroke on many designs. Sizing an actuator for one without understanding the other produces a package that struggles on every cycle.</p>
+    <p class="text-lg leading-relaxed">This guide walks through the torque characteristics that define butterfly valve automation, how concentric, double eccentric and triple eccentric designs change the numbers, common torque ranges by valve size, the safety factor practice that keeps packages reliable, and the accessories — limit switches, solenoid valves, positioners — that turn a bare actuator into a working control package. By the end you will be able to read a valve torque sheet and specify a PNEUMACTUATOR package with confidence.</p>
+    <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
+
+    <h2 id="snapshot">The Snapshot</h2>
+    <ul>
+      <li>Butterfly valves are 90° quarter-turn devices: the actuator must deliver its sizing torque at the supply pressure actually available on site, not the catalog pressure.</li>
+      <li>Three torque components decide the size: breakout torque at the closed position (usually the peak for resilient-seated valves), dynamic torque from flow, and bearing friction. On/off service is almost always governed by breakout torque.</li>
+      <li>Common torque ranges for resilient-seated concentric butterfly valves in water service at PN10–PN16 run from roughly 8–20 Nm at DN50 up to 500–1200 Nm at DN350–DN400 — but the same size in a metal-seated triple eccentric design can need several times more. Pressure class, seat material and media move every one of these figures.</li>
+      <li>Double and triple eccentric designs reduce seat rubbing during opening, which reshapes the torque curve. Triple eccentric (metal-seated) valves typically carry higher breakout and seating torque and benefit from an actuator with strong torque at the end positions.</li>
+      <li>Rack and pinion actuators cover the common DN50–DN300 butterfly range; scotch yoke actuators take over for large diameters and high breakout demands, with output torque up to 200,000+ Nm.</li>
+    </ul>
+
+    <h2 id="torque-characteristics">Butterfly Valve Torque Characteristics</h2>
+    <p>A butterfly valve needs torque for three distinct reasons, and they do not all peak at the same point in the stroke. Understanding the curve is the difference between a reliable package and a field retrofit.</p>
+    <h3>1. Breakout torque: the closed-position peak</h3>
+    <p>Breakout torque is what it takes to start the disc moving away from the closed position. For a resilient-seated (concentric) valve, the disc edge is compressed into the rubber seat around the full circumference, and static friction plus the seat compression force must be overcome. This is usually the highest torque value on the sheet — commonly 1.5–3 times the dynamic torque for lined valves — and it is the figure that governs on/off actuator sizing. The same physics applies in reverse at the end of the closing stroke, which matters for spring return packages: the spring must still be able to push the disc into the seat at its weakest, end-of-travel output.</p>
+    <h3>2. Dynamic torque: the mid-stroke peak</h3>
+    <p>Once the disc opens, flow across the disc face generates hydrodynamic torque. On concentric designs this rises from zero at the closed position, peaks in the 60–75° range, and falls back to a small value at 90° when the disc is parallel to the flow. For throttling (modulating) duty the dynamic torque can dominate, because the valve spends its life in the mid-stroke zone where this peak lives. For on/off duty it rarely governs, but it still belongs in the sizing calculation rather than being ignored.</p>
+    <h3>3. Bearing and seal friction</h3>
+    <p>Shaft bearings, stem seals and the disc-to-body clearances add a relatively small, roughly constant torque. It matters most on large valves and after long idle periods, when hardened grease and dried media can push the effective breakaway figure well above the catalog value — one reason field engineers add margin that the paper calculation does not show.</p>
+    <p>The practical consequence: for on/off butterfly service, size against breakout torque with a safety factor, then check that the chosen actuator still covers the dynamic peak. Valves that are throttled continuously, or closed quickly on long pipelines, deserve extra care — see the <a href="/blog/actuator-torque-calculation/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">step-by-step torque calculation guide</a> for the full method.</p>
+
+    <h2 id="eccentric-designs">Concentric vs Double vs Triple Eccentric: What Changes for the Actuator</h2>
+    <p>Butterfly valve geometry exists in three main families, and the seat design changes the torque requirement more than any other single factor. The eccentricity refers to how the shaft and seat are offset relative to the disc centerline.</p>
+    <table>
+      <thead>
+        <tr><th>Design</th><th>Seat contact</th><th>Rubbing on opening</th><th>Relative torque level</th><th>Typical service</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Concentric (zero offset)</td><td>Full 360° resilient seat (EPDM, NBR, PTFE)</td><td>High — disc edge wipes the seat</td><td>Lowest per size; breakout is the peak</td><td>Water, HVAC, clean gases, PN10–PN16</td></tr>
+        <tr><td>Double eccentric (double offset)</td><td>Resilient or soft metal seat; disc lifts off after a few degrees</td><td>Low — cam action clears the seat quickly</td><td>Moderate; lower breakout than concentric at same size</td><td>Higher pressures and temperatures, wider media range</td></tr>
+        <tr><td>Triple eccentric</td><td>Metal-to-metal conical seat, contact concentrated near closure</td><td>Minimal through most of the stroke</td><td>Highest breakout and seating torque per size</td><td>Steam, hydrocarbons, ANSI 150–600, fire-safe duty</td></tr>
+      </tbody>
+    </table>
+    <h3>What each design demands from the actuator</h3>
+    <p>Concentric valves are the forgiving case: moderate breakout torque, predictable curve, and a standard rack and pinion actuator with a 1.3–1.5 safety factor covers them in most installations. Double eccentric designs shift the curve down but keep the same general shape — the main gain is reduced seat wear over many cycles, which keeps the torque requirement stable over the valve's life.</p>
+    <p>Triple eccentric valves are the demanding case. Because the seal is metal-to-metal and conical, the seating torque at the closed position is a real, repeatable figure that must be delivered at the very end of the closing stroke, and the breakout torque to unseat it is correspondingly high. This is where a <a href="/products/scotch-yoke/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">scotch yoke actuator</a> earns its keep: its torque output rises toward the end positions, matching exactly where a triple eccentric valve needs it.</p>
+
+    <h2 id="size-torque">Actuator Selection by Valve Size: Common Torque Ranges</h2>
+    <p>The table below shows common torque ranges for resilient-seated concentric butterfly valves in water and air service at PN10–PN16. Treat these as a starting reference, not a substitute for the valve manufacturer's torque sheet: pressure class, seat material, disc material, media and valve design all move the numbers, sometimes by a factor of two or more. A DN200 at PN16 with a metal seat is a different sizing problem from the same DN200 at PN10 with an EPDM seat.</p>
+    <table>
+      <thead>
+        <tr><th>Valve size</th><th>Common torque range (Nm)*</th><th>Typical actuator approach</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>DN50</td><td>8 – 20</td><td>Rack and pinion, F05/F07 interface</td></tr>
+        <tr><td>DN80</td><td>20 – 45</td><td>Rack and pinion, F07</td></tr>
+        <tr><td>DN100</td><td>35 – 80</td><td>Rack and pinion, F07/F10</td></tr>
+        <tr><td>DN150</td><td>70 – 160</td><td>Rack and pinion, F10</td></tr>
+        <tr><td>DN200</td><td>120 – 300</td><td>Rack and pinion, F10/F12</td></tr>
+        <tr><td>DN250</td><td>200 – 500</td><td>Rack and pinion (upper range) or small scotch yoke</td></tr>
+        <tr><td>DN300</td><td>300 – 700</td><td>Rack and pinion or scotch yoke; scotch yoke preferred for spring return</td></tr>
+        <tr><td>DN350 – DN400</td><td>500 – 1200</td><td>Scotch yoke</td></tr>
+        <tr><td>DN500 and above</td><td>800+</td><td>Scotch yoke (AW series)</td></tr>
+      </tbody>
+    </table>
+    <p><em>*Indicative ranges for resilient-seated concentric butterfly valves in water/air service at PN10–PN16. Actual values depend on pressure class (PN16 and ANSI 150+ typically sit at or above the upper end), seat material, media and valve design. Always request the valve manufacturer's measured torque data before finalizing an actuator.</em></p>
+    <p>Two practical notes. First, the same nominal size in a higher pressure class or with a metal seat can land well outside this table — a triple eccentric DN300 in ANSI 150 commonly needs 1500–3000 Nm or more, which is squarely scotch yoke territory. Second, butterfly valve actuation is torque-driven, not flange-driven: a DN200 valve may carry an F12 mounting flange while needing only 200 Nm, and a small actuator on a large flange is a valid, common combination. What has to match is both the ISO 5211 flange and the torque — see our <a href="/blog/iso-5211-mounting-standard/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">ISO 5211 mounting guide</a> for the interface side of the match.</p>
+
+    <h2 id="safety-factor">The Safety Factor: Why Catalog Torque Is Not Enough</h2>
+    <p>Every sizing exercise ends with the same question: how much margin? Industry practice for quarter-turn valve automation commonly applies 1.3–1.5× for double acting actuators and 1.5–2.0× for spring return, and the difference exists for a mechanical reason.</p>
+    <h3>Why spring return needs more margin</h3>
+    <p>A spring return actuator's output torque is not constant: it is highest at the start of the spring stroke and falls as the spring extends. The torque available to seat the valve is the end-of-stroke value, which for many designs is only 60–80% of the rated figure. If the actuator was sized against breakout torque without checking the spring end torque against the valve's seating torque, the package can fail closed — the exact scenario that spring return is bought to prevent. Sizing the spring set to deliver seating torque at the end of travel is the single most common adjustment in butterfly valve packages.</p>
+    <h3>Supply pressure: the derating nobody reads</h3>
+    <p>Actuator torque ratings are typically quoted at 5.5 or 6 bar (80–87 psi). Output torque scales almost linearly with supply pressure, so a plant running 4 bar delivers roughly 25–30% less torque than the catalog figure. If the site air supply is weak, variable, or shared with other consumers, size the actuator against the worst-case pressure or add a pressure booster. It is cheaper to oversize once than to swap an actuator after commissioning.</p>
+    <h3>Real-world friction creep</h3>
+    <p>Temperature swings, dried media on the disc edge, hardened lubricant and months of idle service all push real breakaway torque above the fresh, clean valve figure used in catalogs. The safety factor is what absorbs this creep. If the service is abrasive, sticky, or operates rarely, staying at the top of the range (1.5× double acting, 2.0× spring return) is a reasonable habit.</p>
+
+    <h2 id="actuator-type">Rack and Pinion or Scotch Yoke? Matching the Torque Profile</h2>
+    <p>Both mechanism types produce 90° rotation; they differ in where in the stroke they deliver torque, and that difference maps neatly onto butterfly valve families.</p>
+    <h3>Rack and pinion: linear, predictable, compact</h3>
+    <p>A rack and pinion actuator (AT series) delivers roughly constant torque across the stroke, with a modest rise in the mid-range on twin-piston designs. That flat profile is a good match for concentric butterfly valves, where breakout torque at 0° and the dynamic peak around 60–75° sit close together and the valve asks for nothing dramatic at the ends. Rack and pinion units cover the DN50–DN300 butterfly range in common pressure classes, with output from 8 Nm to 4000+ Nm at 5.5 bar.</p>
+    <h3>Scotch yoke: torque where the valve wants it</h3>
+    <p>A scotch yoke mechanism converts piston force through a sliding yoke, which produces high torque at the stroke ends (the 0° and 90° positions) and lower torque in the middle. That is precisely the shape a butterfly valve's demand curve takes: high breakout at closed, high seating torque at closed, and a comparatively light mid-stroke. The match is why scotch yoke actuators dominate large butterfly valves, spring return butterfly packages, and triple eccentric designs — anywhere the end-position torque decides the size. AW series scotch yoke units run from 100 Nm up to 200,000+ Nm and cover DN200–DN1200.</p>
+    <p>The crossover between the two families sits roughly around DN300–DN350 for butterfly valves, but the real deciding factor is the torque figure, not the diameter: a DN250 triple eccentric valve can need more torque than a DN400 concentric valve. If you are comparing mechanisms in detail, the <a href="/blog/rack-and-pinion-vs-scotch-yoke/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">rack and pinion vs scotch yoke comparison</a> covers the trade-offs in depth.</p>
+
+    <h2 id="fail-safe">Double Acting vs Spring Return for Butterfly Duty</h2>
+    <p>Butterfly valves are frequently specified with a fail-safe position, and the choice changes both the actuator family and the torque budget. A double acting actuator uses air to open and air to close; a spring return (single acting) actuator uses air to stroke one way and a spring to return it, giving a defined position when air is lost.</p>
+    <h3>Fail-closed (FC) is the common butterfly default</h3>
+    <p>In water, chemical and process lines, the default fail position is closed: if air disappears, the line isolates. That means a spring return actuator with the spring set to close, and the sizing rule above applies — the spring end torque must exceed the valve's seating torque. For large or triple eccentric valves the required spring set becomes physically large, which is why big fail-closed butterfly packages often go to scotch yoke: the yoke's high end-position torque gets more seating force from the same spring volume.</p>
+    <h3>When double acting is the better call</h3>
+    <p>If the plant can accept a valve that stays where it was when air is lost (fail-in-place), double acting halves the actuator size for the same valve, since no spring torque is consumed. Double acting also suits continuous cycling service, where the springs of a single acting unit would be the life-limiting component. The full trade-off, including air consumption and spring sizing, is covered in our <a href="/blog/double-acting-vs-spring-return/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">double acting vs spring return guide</a>.</p>
+
+    <h2 id="accessories">Accessories: Limit Switches, Solenoid Valves and Positioners</h2>
+    <p>A bare actuator opens and closes a valve; the accessories turn it into a control package. Most butterfly valve installations need at least the first two items below.</p>
+    <h3>NAMUR solenoid valve</h3>
+    <p>The solenoid valve controls the air that drives the actuator. For double acting actuators a 5/2-way valve is standard (air to one side while exhausting the other); for spring return a 3/2-way valve is typical. NAMUR (VDI/VDE 3845) solenoid valves bolt directly onto the actuator top pad with no extra piping, which is why the AT and AW series both carry the NAMUR interface. Common coil voltages are 24 VDC, 110 VAC and 220 VAC — confirm the site voltage before ordering, because a coil swap in the field is the classic commissioning delay.</p>
+    <h3>Limit switch box</h3>
+    <p>A limit switch box reports valve position to the PLC or DCS: typically two switches or proximity sensors, one for the open position and one for closed. Mechanical switches (SPDT/DPDT) are the low-cost default; inductive proximity sensors handle high cycle counts and dirty environments. Enclosures are commonly rated IP67 for outdoor and washdown service. If the site is a hazardous area, the switch box and solenoid need the appropriate ATEX rating — see our <a href="/blog/atex-pneumatic-actuators/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">ATEX actuator guide</a> before specifying.</p>
+    <h3>Positioner (modulating service only)</h3>
+    <p>If the butterfly valve throttles flow rather than just opening and closing, add a positioner: it takes a 4–20 mA (or 3–15 psi) control signal and meters air to hold the disc at the commanded angle against the flow forces. Butterfly valves throttled in the 30–70° zone see real dynamic torque, and a positioner with enough air supply is what holds position there.</p>
+    <h3>Supporting hardware</h3>
+    <p>An air filter regulator (FRL) cleans and dries the supply and sets the operating pressure — cheap insurance for solenoid reliability. A manual override (gear or handwheel) lets operators stroke the valve without air, which is worth specifying on large or critical valves. For slow closure on long pipelines, add speed control or a quick exhaust valve to manage water hammer; on fast-cycling services a quick exhaust speeds the stroke. The full accessory selection logic is in our <a href="/blog/actuator-accessories-guide/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">actuator accessories guide</a>.</p>
+
+    <h2 id="installation-examples">Installation Examples: Three Typical Packages</h2>
+    <p>Three recurring configurations show how the pieces come together. Torque figures are illustrative for the valve classes described — confirm against the actual valve's torque sheet before ordering.</p>
+    <h3>Example 1: Water treatment, DN200 on/off, fail-in-place</h3>
+    <p>A DN200 lug butterfly valve with EPDM seat, PN10, water service, torque sheet around 150–250 Nm. Double acting rack and pinion sized at 1.4× gives roughly 300–350 Nm at 5.5 bar — comfortably inside the AT series range. Package: AT-series double acting actuator, NAMUR 5/2 solenoid (24 VDC), IP67 limit switch box, FRL. ISO 5211 F12 interface. The valve strokes in 1–2 seconds with standard air, which is fine for filter backwash duty.</p>
+    <h3>Example 2: Chemical dosing line, DN150, fail-closed</h3>
+    <p>A DN150 PTFE-lined concentric butterfly valve, corrosive media, fail-closed requirement. Torque sheet around 100–200 Nm, but the spring return budget must cover seating torque at end of stroke, so sizing lands at 1.6–1.8× — roughly 300–400 Nm of spring-rated output. Package: spring return rack and pinion actuator with spring set sized to close, NAMUR 3/2 solenoid, IP67 switch box with proximity sensors for the washdown area, FRL. The spring set is the critical order detail: it must be quoted for end-of-stroke seating torque, not catalog mid-stroke figures.</p>
+    <h3>Example 3: Steam and condensate, DN350, high temperature</h3>
+    <p>A DN350 triple eccentric metal-seated butterfly valve, ANSI 150, steam service, breakout torque commonly in the 1500–3000 Nm range depending on the exact design and class. That figure decides the mechanism: an AW series scotch yoke double acting actuator delivers high end-position torque and covers the requirement without an oversized body. Package: scotch yoke actuator, 5/2 solenoid with high-temperature-safe coil voltage, proximity limit switches, speed control to slow the closing stroke and limit water hammer on the condensate line, manual gear override for commissioning.</p>
+
+    <h2 id="checklist">Final Selection Checklist</h2>
+    <p>Run through this list before you order, and you will avoid the majority of butterfly actuator field failures.</p>
+    <ul>
+      <li><strong>Get the valve torque sheet:</strong> breakout, dynamic and seating torque for your exact size, pressure class and seat material — not a generic chart.</li>
+      <li><strong>Confirm the site supply pressure:</strong> size at the worst-case pressure, not the 5.5–6 bar catalog figure.</li>
+      <li><strong>Apply the right safety factor:</strong> 1.3–1.5× double acting; 1.5–2.0× spring return with the spring end torque checked against seating torque.</li>
+      <li><strong>Match the mechanism to the curve:</strong> rack and pinion for concentric valves through DN300; scotch yoke for large diameters, triple eccentric designs and high breakout figures.</li>
+      <li><strong>Decide the fail position first:</strong> fail-closed, fail-open or fail-in-place changes the actuator family and the spring budget.</li>
+      <li><strong>Check the ISO 5211 flange:</strong> the actuator's bottom interface must match the valve top flange, and the torque must match too.</li>
+      <li><strong>Specify the accessories:</strong> NAMUR solenoid (3/2 or 5/2), limit switch box (mechanical or proximity, IP67), FRL, plus positioner only if throttling.</li>
+      <li><strong>Confirm environment:</strong> ATEX rating, temperature range and washdown exposure before finalizing the package.</li>
+    </ul>
+    <p>The bottom line: butterfly valve actuator selection is a torque exercise, not a size exercise. Understand the valve's torque curve — breakout at the closed position, the dynamic peak in the mid-stroke, and the extra demand of eccentric and metal-seated designs — apply a realistic safety factor at the real supply pressure, and match the mechanism to the curve. Do that and the package seats reliably on every cycle. <a href="/products/rack-and-pinion/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">Send us your valve model and operating conditions</a> and our engineers will size the actuator and quote the complete package within 24 hours.</p>
+  </BlogPostTemplate>
+</Layout>

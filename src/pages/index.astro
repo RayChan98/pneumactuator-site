@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProductCard from '../components/ProductCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { products } from '../data/products';
+
+const featured = products.slice(0, 5);
+
+const features = [
+  { title: 'ISO 5211 / NAMUR Compliant', desc: 'Standard mounting interfaces fit ball, butterfly and plug valves without adapters — universal compatibility across brands.' },
+  { title: 'Torque-Tested Reliability', desc: 'Every actuator is cycle-tested to 1,000,000+ operations with calibrated torque verification before shipping.' },
+  { title: 'Fail-Safe Options', desc: 'Spring return (FC/FO) and double acting configurations meet your process safety requirements.' },
+  { title: 'Factory-Direct OEM', desc: 'Custom torque, stroke, materials and private label — direct from the factory with engineering support.' },
+  { title: 'Corrosion-Resistant Build', desc: 'Hard-anodized aluminum and ductile iron bodies handle chemical, marine and outdoor duty.' },
+  { title: '7-15 Day Lead Time', desc: 'Standard models ship fast; OEM projects quoted within 24 hours with samples before volume.' },
+];
+---
+
+<Layout title="Pneumatic Valve Actuator Manufacturer | Rack & Pinion, Scotch Yoke, Spring Return | PNEUMACTUATOR" description="PNEUMACTUATOR is an industrial pneumatic valve actuator manufacturer. Factory-direct rack and pinion, scotch yoke, spring return and double acting actuators with OEM/ODM support for valve distributors and automation integrators.">
+  <Hero
+    title="Industrial Pneumatic Valve Actuators"
+    subtitle="Rack and pinion, scotch yoke and spring return actuators engineered for reliable quarter-turn valve automation — ISO 5211 compliant, torque-tested and factory-direct with OEM/ODM support."
+    ctaPrimary="Get a Quote"
+    ctaSecondary="Explore Products"
+  />
+
+  <!-- Products grid -->
+  <section class="bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold text-brand-blue">OUR PRODUCT LINE</p>
+        <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-navy-950">Complete Pneumatic Actuator Range</h2>
+        <p class="mt-4 text-base leading-relaxed text-slate-600">
+          From compact rack and pinion actuators to high-torque scotch yoke units — one factory, one partner for your entire valve automation project.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {featured.map((p) => <ProductCard title={p.model.replace('Pneumatic Actuator', '').trim()} description={p.tagline} href={`/products/${p.slug}/`} tag={p.series} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why pneumatic actuators section -->
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <p class="text-sm font-semibold text-brand-blue">WHY PNEUMATIC VALVE ACTUATORS?</p>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-navy-950">Reliable Quarter-Turn Automation for Demanding Processes</h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600">
+            Pneumatic actuators convert compressed air into precise rotary or linear motion, automating ball, butterfly and plug valves in pipelines, plants and process systems. Compared to electric actuation, pneumatic actuators offer faster cycling, higher torque density, intrinsic explosion safety and lower installed cost — which is why they dominate oil & gas, water treatment, chemical and power applications.
+          </p>
+          <ul class="mt-8 space-y-4">
+            {features.map((f) => (
+              <li class="flex gap-3">
+                <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-night-green/10 text-night-green">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="h-4 w-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="font-semibold text-navy-950">{f.title}</h3>
+                  <p class="text-sm text-slate-600">{f.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <!-- 对比：电动 vs 气动 -->
+          <div class="overflow-hidden rounded-2xl bg-slate-900">
+            <svg viewBox="0 0 400 300" class="h-full w-full" role="img" aria-label="Pneumatic vs electric actuator comparison">
+              <rect width="400" height="300" fill="#0f172a"/>
+              <text x="200" y="120" text-anchor="middle" fill="#475569" font-size="18" font-family="sans-serif">ELECTRIC ACTUATORS</text>
+              <text x="200" y="170" text-anchor="middle" fill="#334155" font-size="30" font-family="sans-serif">⚡</text>
+              <text x="200" y="220" text-anchor="middle" fill="#475569" font-size="14" font-family="sans-serif">Higher cost · Slower cycle · Hazardous-area limits</text>
+            </svg>
+          </div>
+          <div class="overflow-hidden rounded-2xl bg-navy-900">
+            <svg viewBox="0 0 400 300" class="h-full w-full" role="img" aria-label="Pneumatic actuator advantages">
+              <rect width="400" height="300" fill="#0F2A43"/>
+              <text x="200" y="120" text-anchor="middle" fill="#7DD3FC" font-size="18" font-family="sans-serif">PNEUMATIC ACTUATORS</text>
+              <text x="200" y="170" text-anchor="middle" fill="#38BDF8" font-size="30" font-family="sans-serif">⚙️</text>
+              <text x="200" y="220" text-anchor="middle" fill="#94A3B8" font-size="14" font-family="sans-serif">Fast cycling · High torque · ATEX-safe · Cost-effective</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Need a Custom Actuator Solution?"
+    subtitle="Send us your valve model, torque requirement and media — our engineers respond within 24 hours with a sizing recommendation and quote."
+  />
+</Layout>

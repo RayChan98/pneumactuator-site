@@ -1,0 +1,172 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostTemplate from '../../components/BlogPostTemplate.astro';
+
+const props = {
+  title: 'How to Calculate Pneumatic Actuator Torque: A Step-by-Step Guide',
+  category: 'How-to',
+  date: '2026-08-22',
+  readTime: 12,
+  author: 'Ray Chan',
+  toc: [
+    { id: 'snapshot', label: 'The Snapshot' },
+    { id: 'valve-torque', label: 'What Valve Torque Really Means' },
+    { id: 'torque-sources', label: 'The Four Torque Sources' },
+    { id: 'torque-data', label: 'Where Torque Numbers Come From' },
+    { id: 'sizing-formula', label: 'The Sizing Formula' },
+    { id: 'safety-factor', label: 'Safety Factors: How to Choose' },
+    { id: 'example-double-acting', label: 'Worked Example 1: Double-Acting on a Ball Valve' },
+    { id: 'example-spring-return', label: 'Worked Example 2: Spring Return in Safety Service' },
+    { id: 'example-butterfly', label: 'Worked Example 3: Butterfly Valve on Low Pressure' },
+    { id: 'air-pressure', label: 'How Air Pressure Affects Output Torque' },
+    { id: 'mistakes-checklist', label: 'Sizing Mistakes and a Quick Checklist' },
+    { id: 'bottom-line', label: 'The Bottom Line' },
+  ],
+  related: [
+    { href: '/blog/ball-valve-actuator-sizing/', title: 'Matching an Actuator to a Ball Valve', readTime: 10 },
+    { href: '/blog/butterfly-valve-actuator-selection/', title: 'Pneumatic Actuator for Butterfly Valve', readTime: 11 },
+    { href: '/blog/double-acting-vs-spring-return/', title: 'Double Acting vs Spring Return', readTime: 9 },
+    { href: '/blog/iso-5211-mounting-standard/', title: 'ISO 5211 Mounting Standard', readTime: 8 },
+  ],
+};
+---
+
+<Layout title="How to Calculate Pneumatic Actuator Torque: A Step-by-Step Guide | PNEUMACTUATOR" description="How to calculate pneumatic actuator torque: valve breakaway, running, seating and dynamic torque, safety factors of 1.3-2.0, supply pressure derating, plus three fully worked sizing examples.">
+  <BlogPostTemplate {...props}>
+    <!-- Blog Intro 引言 -->
+    <p class="text-lg leading-relaxed"><strong>Most actuator failures are not actuator failures at all — they are sizing errors that surface weeks after installation.</strong> A ball valve that needs 60 N·m to break open, matched with an actuator rated for 55 N·m at the plant's 5.5 bar supply, will stall partway through its first few hundred cycles. The classic symptom is a valve that opens fine in the workshop on a bench regulator at 6 bar, then refuses to move on the line where the real supply sags to 5 bar, where packing has already bedded in, and where the media has left a thin scale on the ball. By then the line is down, the maintenance crew is swapping actuators, and the cost of the mistake is measured in hours of lost production, not in the price of the actuator.</p>
+    <p class="text-lg leading-relaxed">This guide walks through what valve torque actually is, the four torque sources a quarter-turn valve presents (breakaway, running, seating and dynamic), where the numbers come from, how safety factors work in practice (1.3–1.5 for general duty, 1.5–2.0 for safety-critical service), the core sizing formula, and three fully worked examples with real arithmetic. By the end you will be able to take a valve data sheet and a compressor-room pressure gauge and size a pneumatic actuator with confidence — and know exactly what to send to your supplier so they cannot undersize you.</p>
+    <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
+
+    <h2 id="snapshot">The Snapshot</h2>
+    <ul>
+      <li>Required actuator torque = peak valve torque × safety factor. Peak valve torque is the largest of the breakaway, running, seating and dynamic torque values — not the average.</li>
+      <li>Safety factors in common use: 1.3–1.5 for general process duty, 1.5–2.0 for safety-critical services such as ESD, fire-safe or toxic media duty.</li>
+      <li>Ball valves usually peak at breakaway torque (unseating); butterfly valves usually peak at seating torque. Size on the peak, whichever source it is.</li>
+      <li>Actuator output scales roughly with supply pressure: a unit rated 110 N·m at 5.5 bar delivers roughly 120 N·m at 6.0 bar but only about 100 N·m at 5.0 bar. Always size at the lowest pressure the plant can actually deliver.</li>
+      <li>Spring return actuators have two numbers to check: the spring end must hold the valve at end of stroke, and the air end must overcome spring torque plus valve torque at the start of the air stroke.</li>
+    </ul>
+
+    <h2 id="valve-torque">What Valve Torque Really Means</h2>
+    <p>Valve torque is the rotational force the valve demands at its stem to operate — the resistance the closure member, seats, seals and fluid put up against rotation. It is expressed in newton-metres (N·m) in most of the world, or in inch-pounds (lbf·in) in North American data sheets; one N·m equals roughly 8.85 lbf·in, so a 100 N·m valve is about 885 lbf·in. The actuator's job is simple: deliver more torque at the stem than the valve asks for, across the whole 90° stroke, at the actual supply pressure available on site.</p>
+    <p>The subtle part is that valve torque is not a single number. It changes with rotation angle, with line pressure, with media, with temperature and with the age of the valve. A quarter-turn valve presents a torque profile: low in the middle of the stroke where the disc or ball is free, and higher near the stroke ends where seating and unseating happen. That is why experienced sizing engineers talk about the torque <em>profile</em> rather than the torque <em>value</em> — and why a scotch yoke, which delivers more torque at the stroke ends, can drive a butterfly valve with a smaller air consumption than a rack and pinion unit of the same nominal rating. The practical rule is: identify the worst point of the profile and size the actuator for that point.</p>
+
+    <h2 id="torque-sources">The Four Torque Sources</h2>
+    <p>Every quarter-turn valve torque table published by valve manufacturers breaks down into four components. Knowing which one dominates for your valve type is most of the sizing battle.</p>
+    <h3>1. Breakaway torque</h3>
+    <p>Breakaway torque — sometimes called unseating torque — is the torque required to start the closure member moving from the closed position. For ball valves this is almost always the peak: line pressure pushes the ball hard against the downstream seat, and the ball must overcome seat interference plus the pressure load before it rotates freely. It is the value that shows up in "break torque" columns of ball valve data sheets, and it can be two to three times the running torque on a high-pressure-class ball valve.</p>
+    <h3>2. Running torque</h3>
+    <p>Running torque is the torque needed to keep the stem turning through the middle of the stroke, once the ball or disc is free. It is dominated by packing friction, stem bearing friction and seal drag, and it is usually the lowest of the four values. Some suppliers quote it, some do not; it matters mainly for estimating cycle speed and actuator air consumption, not for the final size.</p>
+    <h3>3. Seating torque</h3>
+    <p>Seating torque is the torque required to press the closure member into the seat and achieve a tight shutoff at the end of the closing stroke. For butterfly valves this is normally the peak: the disc wedges into the seat ring with increasing interference right up to the closed position. Soft-seated ball valves also show a distinct seating peak at the last few degrees of travel. If a valve "wanders" through the middle of its stroke and then slams shut, seating torque is the number to look at.</p>
+    <h3>4. Dynamic torque</h3>
+    <p>Dynamic torque comes from the fluid itself: the pressure imbalance across the disc or ball and the force of flow passing through the partially open valve. In low-pressure, low-flow services it is small enough to ignore. In high-differential-pressure or high-velocity services — throttling duty, large butterfly valves on pumps, slurry lines — it can become the dominant term and must be taken from the valve maker's data rather than guessed.</p>
+    <table>
+      <thead>
+        <tr><th>Valve type</th><th>Usually the peak source</th><th>Typical worst point in stroke</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ball valve (floating ball)</td><td>Breakaway torque</td><td>Opening, first degrees of travel</td></tr>
+        <tr><td>Ball valve (trunnion)</td><td>Breakaway or dynamic</td><td>Opening, or at high ΔP mid-stroke</td></tr>
+        <tr><td>Butterfly valve (soft seat)</td><td>Seating torque</td><td>Closing, final degrees of travel</td></tr>
+        <tr><td>Butterfly valve (high performance)</td><td>Dynamic torque</td><td>Mid-stroke at high ΔP</td></tr>
+        <tr><td>Plug valve</td><td>Breakaway torque</td><td>Opening</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="torque-data">Where Torque Numbers Come From</h2>
+    <p>The torque figures used in sizing should come from the valve manufacturer's data sheet or torque table, not from memory and not from a competitor's catalogue. Most valve makers publish tables of breakaway, running and seating torque by valve size and pressure class, usually measured on a clean, freshly lubricated valve at a stated reference condition. When you request a quote for an actuated valve package, the valve supplier should supply the torque table with it — if they will not, treat that as a warning sign.</p>
+    <p>Published figures are a starting point, not a promise. A valve that has been in service for three years, with aged packing, a trace of scale on the ball and a slightly tightened gland, will typically demand more torque than the table says — experienced maintenance teams budget 20–30% drift on old installations. For critical services, a practical validation is to measure the bare valve's breakaway torque with a torque wrench on the bench before actuation: it is quick, it grounds the calculation in a measured number, and it catches a seized or misassembled valve before it goes on the line. When the valve data is genuinely missing, the safe move is to ask the valve maker for a conservative estimate for your size and pressure class rather than inventing one — undersizing on a guess is the most expensive guess in the package.</p>
+
+    <h2 id="sizing-formula">The Sizing Formula</h2>
+    <p>The core formula is deliberately short:</p>
+    <p class="font-semibold text-navy-950">Required actuator torque = peak valve torque × safety factor</p>
+    <p>where peak valve torque is the largest of the four sources for your valve and service, and the safety factor is chosen from the table in the next section. The result is the torque the actuator must deliver at the <em>actual</em> supply pressure on site — not the torque stamped on the catalogue page for the reference pressure. If the catalogue rating is quoted at 5.5 bar (80 psi) and your plant runs 6.0 bar, the unit delivers a bit more; if your plant runs 4.5 bar, it delivers noticeably less. Output torque for a pneumatic actuator scales approximately linearly with supply pressure:</p>
+    <p class="font-semibold text-navy-950">M(P) = M_rated × P / P_rated</p>
+    <p>For spring return actuators, the formula expands to two checks. On the spring stroke (air off), the spring torque at the <em>end</em> of stroke must be at least the required torque, because that is where the spring is least compressed and weakest. On the air stroke, the worst point is the <em>start</em>, where the spring is fully compressed and pushing back hardest: the air-side output must exceed spring torque plus required valve torque. Getting one of these two checks wrong is the most common spring return sizing error, and it tends to surface exactly once, at the moment the plant needs the fail-safe to work.</p>
+    <p>Two mechanism notes worth carrying into any calculation. Rack and pinion actuators — the workhorses of quarter-turn automation, and the core of our <a href="/products/rack-and-pinion/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">rack and pinion actuator line</a> — deliver roughly constant torque across the 90° stroke, so they suit valves whose peak is at breakaway. Scotch yoke actuators deliver more torque at the stroke ends, which lines up naturally with the butterfly valve profile, where seating and dynamic peaks live at the ends. Matching the mechanism's torque shape to the valve's torque profile is free margin that no safety factor has to pay for.</p>
+
+    <h2 id="safety-factor">Safety Factors: How to Choose</h2>
+    <p>The safety factor is the margin between the valve's theoretical torque demand and the actuator's delivered torque. It absorbs everything the data sheet does not: aging seals, packing tightening, deposits and scale, temperature swings, supply pressure variation, measurement uncertainty, and the fact that a valve on a real line never behaves as well as a valve on a test bench.</p>
+    <table>
+      <thead>
+        <tr><th>Service class</th><th>Common safety factor range</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>General process duty, clean media, low cycling</td><td>1.3–1.5</td><td>Air, water, neutral media; open/close duty with occasional cycling</td></tr>
+        <tr><td>High cycling or modulating duty</td><td>1.4–1.6</td><td>Frequent operation accelerates seal and packing wear</td></tr>
+        <tr><td>Safety-critical service (ESD, fire-safe, toxic or flammable media)</td><td>1.5–2.0</td><td>The valve must reach its fail position on demand, years after installation</td></tr>
+        <tr><td>Aggressive media, slurries, high temperature, old or refurbished valves</td><td>Upper end of the relevant range</td><td>Scale, solids and temperature all raise real torque above published values</td></tr>
+      </tbody>
+    </table>
+    <p>Two practical rules keep the margin honest. First, apply the safety factor to the valve torque and state it on the sizing sheet — if you also let the supplier "add a bit for safety", the margins stack silently and you pay for an oversized actuator and an oversized price. Second, for spring return actuators in safety service, apply the same factor to both the spring check and the air check; a fail-safe that only works on paper is worse than no fail-safe at all.</p>
+
+    <h2 id="example-double-acting">Worked Example 1: Double-Acting on a Ball Valve</h2>
+    <p>Let us size a double-acting rack and pinion actuator for a 2-inch full-bore ball valve in general water service. The valve maker's data sheet lists the torque table shown below, and the plant pneumatic supply is regulated at 6.0 bar with a guaranteed minimum of 5.0 bar.</p>
+    <table>
+      <thead>
+        <tr><th>Torque source</th><th>Published value (N·m)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Breakaway torque</td><td>60</td></tr>
+        <tr><td>Running torque</td><td>45</td></tr>
+        <tr><td>Seating torque</td><td>50</td></tr>
+        <tr><td>Dynamic torque</td><td>12</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Step 1 — find the peak.</strong> The largest value is the breakaway torque at 60 N·m. That is the number we size on.</p>
+    <p><strong>Step 2 — apply the safety factor.</strong> Clean water, low cycling, no fail-safe requirement: a factor of 1.4 is reasonable. Required torque = 60 × 1.4 = 84 N·m.</p>
+    <p><strong>Step 3 — check the actuator at the actual supply pressure.</strong> The catalog candidate is rated 110 N·m at the reference pressure of 5.5 bar. At the plant's minimum of 5.0 bar, its output is roughly 110 × (5.0 ÷ 5.5) ≈ 100 N·m. At the normal 6.0 bar it delivers about 120 N·m. Both values clear the 84 N·m requirement, so the 110 N·m size fits with margin at every pressure the plant can actually deliver.</p>
+    <p><strong>Step 4 — record the result.</strong> The sizing sheet reads: peak valve torque 60 N·m × safety factor 1.4 = 84 N·m required; selected actuator output ≥ 100 N·m at minimum supply pressure. If the plant supply were later cut to 4.5 bar, the same unit would deliver roughly 90 N·m — still acceptable, but the margin would be thin enough to justify a re-check. The same logic for a larger ball valve is covered in our <a href="/blog/ball-valve-actuator-sizing/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">ball valve actuator sizing guide</a>.</p>
+
+    <h2 id="example-spring-return">Worked Example 2: Spring Return in Safety Service</h2>
+    <p>Now take the same valve and put it on a fuel line with a fail-closed requirement: when air is lost, the valve must close. The valve torque table is identical — peak 60 N·m breakaway — but the service class changes everything else.</p>
+    <p><strong>Step 1 — peak torque.</strong> Still 60 N·m breakaway.</p>
+    <p><strong>Step 2 — safety factor.</strong> Safety-critical service with a flammable medium: 1.5. Required torque = 60 × 1.5 = 90 N·m.</p>
+    <p><strong>Step 3 — spring side check.</strong> The spring set under consideration delivers 100 N·m at the end of the spring stroke (the weakest point). 100 ≥ 90, so the spring holds the valve closed with margin. This is the number that guarantees the fail-safe actually fails safe after years of service.</p>
+    <p><strong>Step 4 — air side check.</strong> At the start of the air stroke the spring is fully compressed and pushes back with 140 N·m. The air end must therefore deliver at least 140 + 90 = 230 N·m. The candidate actuator is rated 240 N·m at 5.5 bar; at the plant's 6.0 bar it delivers roughly 240 × (6.0 ÷ 5.5) ≈ 262 N·m, clearing 230 N·m. Note that the air-side requirement is roughly 3.8 times the valve's peak torque — that is normal for spring return units, and it is why spring return actuators are physically larger than double-acting units for the same valve.</p>
+    <p><strong>Step 5 — record both checks.</strong> If the spring side had failed the check, the correct response is a stronger spring set or a larger frame, never a lower safety factor. The relationship between the two strokes and the fail position logic is explained in our <a href="/blog/double-acting-vs-spring-return/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">double acting vs spring return guide</a>.</p>
+
+    <h2 id="example-butterfly">Worked Example 3: Butterfly Valve on Low Pressure</h2>
+    <p>This example shows how supply pressure alone can flip a correct-looking selection into a failure. A DN150 (6-inch) soft-seated butterfly valve in air service has published torques of: seating 55 N·m, breakaway 40 N·m, running 35 N·m, dynamic 25 N·m. The peak is the seating torque at 55 N·m — the disc wedging into the seat on closure.</p>
+    <p><strong>Step 1 — peak torque.</strong> 55 N·m (seating).</p>
+    <p><strong>Step 2 — safety factor.</strong> General duty, clean air: 1.3. Required torque = 55 × 1.3 ≈ 72 N·m.</p>
+    <p><strong>Step 3 — check at real supply pressure.</strong> The catalog candidate is rated 90 N·m at 5.5 bar. The plant, however, regulates its supply at only 4.5 bar after the filter-regulator losses. Output at 4.5 bar is roughly 90 × (4.5 ÷ 5.5) ≈ 74 N·m — it just clears 72 N·m, with almost no margin left for aging. At 4.0 bar, output drops to about 65 N·m and the valve will stall on the seating stroke.</p>
+    <p><strong>Step 4 — the decision.</strong> Two acceptable paths: confirm the regulated supply can hold 4.5 bar under load and accept a 90 N·m unit with a thin margin, or move to the next size (typically 130–160 N·m class at 5.5 bar) and sleep well. Most plant engineers choose the larger unit and use the margin for future packing and seat wear. The message: always size against the measured, loaded supply pressure at the actuator inlet — not the compressor nameplate, and not the pressure you wish the plant had. The full selection logic for this valve type is covered in the related articles on this page.</p>
+
+    <h2 id="air-pressure">How Air Pressure Affects Output Torque</h2>
+    <p>Pneumatic actuator output torque is fundamentally a pressure times area calculation: supply pressure acting on the piston area, converted to rotation by the rack and pinion or scotch yoke mechanism. Everything that reduces the pressure at the actuator inlet reduces the available torque, in near-direct proportion. Three pressure realities dominate real installations:</p>
+    <h3>1. Reference pressure versus actual supply</h3>
+    <p>Catalog ratings are quoted at a reference pressure — 5.5 bar (80 psi) is common in North America, 5.5–6.0 bar across Europe and Asia. A plant running a regulated 6.5 bar gets roughly 18% more torque than the 5.5 bar rating; a plant at 4.5 bar gets roughly 18% less. Sizing on the catalogue number without converting to site pressure is the single most common torque error in the industry.</p>
+    <h3>2. Pressure losses between compressor and actuator</h3>
+    <p>Filters, regulators, lubricators, small-bore tubing and quick-exhaust valves all cost pressure. A clogged filter element can drop 0.5–1.0 bar by itself; long runs of 6 mm tubing on a fast-cycling actuator can sag under flow. The right number to size on is the pressure measured at the actuator port while the actuator is actually cycling, not the regulator gauge reading at the manifold.</p>
+    <h3>3. Supply pressure variation over time</h3>
+    <p>Compressor plants sag when several users draw at once, and regulators drift. If the minimum believable supply pressure is 5.0 bar and the nominal is 6.0 bar, size for 5.0 bar — that is what the actuator will see on the worst day, which is exactly when a fail-safe has to work. Dry, filtered air also matters indirectly: moisture and debris accelerate seal wear, which raises internal friction and quietly eats into the torque margin over years of service.</p>
+
+    <h2 id="mistakes-checklist">Sizing Mistakes and a Quick Checklist</h2>
+    <p>The failures below account for most undersized actuators that reach the field. Each one is easy to avoid once you know to look for it.</p>
+    <ul>
+      <li><strong>Sizing on the catalogue rating instead of the site supply pressure.</strong> Convert the output to the lowest pressure the plant can deliver, then compare.</li>
+      <li><strong>Using average torque instead of the peak.</strong> Size on the worst point of the torque profile — usually breakaway for ball valves, seating for butterfly valves.</li>
+      <li><strong>Forgetting the spring side of a spring return actuator.</strong> Check the spring end at end of stroke and the air end at start of stroke; both must pass.</li>
+      <li><strong>Double-applying the safety factor.</strong> Apply it once, to the valve torque, and write it on the sizing sheet so suppliers do not add their own silently.</li>
+      <li><strong>Ignoring dynamic torque on high-ΔP or throttling service.</strong> For these duties, take the dynamic value from the valve maker's data.</li>
+      <li><strong>Treating published torque as a lifetime promise.</strong> Plan 20–30% drift on aging valves, or verify with a bench torque-wrench measurement.</li>
+      <li><strong>Skipping the mounting check.</strong> The actuator must not only have torque — it must physically fit the valve top flange (ISO 5211 pattern and drive dimensions). Confirm both before ordering.</li>
+    </ul>
+    <p>Put the whole method on one page and use it every time:</p>
+    <ol>
+      <li>Collect the valve torque table from the valve manufacturer (breakaway, running, seating, dynamic).</li>
+      <li>Identify the peak torque for your valve type and service.</li>
+      <li>Choose the safety factor from the service class (1.3–1.5 general, 1.5–2.0 safety-critical).</li>
+      <li>Compute required torque = peak × safety factor.</li>
+      <li>Select the actuator size whose output at the minimum site supply pressure meets the requirement.</li>
+      <li>For spring return, verify both the spring stroke and the air stroke.</li>
+      <li>Confirm the ISO 5211 mounting and drive fit, then document the calculation on the sizing sheet.</li>
+    </ol>
+
+    <h2 id="bottom-line">The Bottom Line</h2>
+    <p>Actuator sizing is four numbers: the peak valve torque, the safety factor, the actuator's output at the real supply pressure, and — for spring return units — the spring torque at end of stroke. Get those four right and the actuator will open, close and fail-safe for years; get any one of them wrong and the failure shows up on the line, under pressure, at the worst possible moment. The calculation takes ten minutes with a data sheet and a gauge, and it is the difference between an actuated valve package that works on paper and one that works in service.</p>
+    <p>If you are specifying a valve package and want the numbers checked against our catalogue before you commit, <a href="/contact/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">send us your valve model and operating conditions</a> — our engineers return a sized actuator recommendation and a quote within 24 hours.</p>
+  </BlogPostTemplate>
+</Layout>

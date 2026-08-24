@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+// Industries 索引页：气动执行器六大应用场景
+const industries = [
+  { title: 'Butterfly Valve Automation', href: '/industries/butterfly-valves/', kw: 'pneumatic butterfly valve actuator', desc: 'Quarter-turn actuation for DN50-DN1200 butterfly valves — water, HVAC and process lines.' },
+  { title: 'Ball Valve Automation', href: '/industries/ball-valves/', kw: 'pneumatic ball valve actuator', desc: 'On-off and modulating control for floating and trunnion ball valves across pressure classes.' },
+  { title: 'Oil & Gas', href: '/industries/oil-gas/', kw: 'pneumatic actuator oil and gas', desc: 'ATEX-compliant fail-safe actuation for pipelines, terminals and wellhead automation.' },
+  { title: 'Water Treatment', href: '/industries/water-treatment/', kw: 'actuator for water treatment plant', desc: 'Reliable quarter-turn actuation for WTP and wastewater valves in humid, outdoor duty.' },
+  { title: 'Power Plants', href: '/industries/power-plants/', kw: 'valve actuator power plant', desc: 'Steam, cooling water and fuel line actuation with high-cycle, high-temperature options.' },
+  { title: 'Chemical Processing', href: '/industries/chemical-processing/', kw: 'pneumatic actuator chemical plant', desc: 'Corrosion-resistant actuation for aggressive media with NAMUR accessory integration.' },
+];
+---
+
+<Layout title="Pneumatic Actuator Applications | Valve Automation Industries | PNEUMACTUATOR" description="PNEUMACTUATOR pneumatic valve actuators for butterfly valves, ball valves, oil & gas, water treatment, power plants and chemical processing — factory-direct with OEM/ODM support.">
+  <section class="bg-navy-950 text-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <p class="text-sm font-semibold text-night-green">INDUSTRIES</p>
+      <h1 class="mt-2 text-4xl font-extrabold tracking-tight">Valve Automation for Every Industry</h1>
+      <p class="mt-3 max-w-2xl text-lg text-slate-300">From water plants to oil terminals — pneumatic actuators automate quarter-turn valves reliably in the toughest industrial duty.</p>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div class="grid gap-6 md:grid-cols-2">
+        {industries.map((ind) => (
+          <a href={ind.href} class="group rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+            <p class="text-xs font-semibold uppercase tracking-wider text-brand-blue">{ind.kw}</p>
+            <h2 class="mt-2 text-xl font-extrabold text-navy-950 group-hover:text-brand-blue">{ind.title}</h2>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">{ind.desc}</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue">
+              View Solutions
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 transition group-hover:translate-x-1"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Which Actuator for Your Application?"
+    subtitle="Tell us your valve type, media and operating conditions — we recommend the right actuator package within 24 hours."
+  />
+</Layout>

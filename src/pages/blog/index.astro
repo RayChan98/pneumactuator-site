@@ -1,0 +1,135 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const posts = [
+  {
+    title: 'Pneumatic Actuator Guide 2026: Complete Buyer Manual for Valve Automation',
+    href: '/blog/pneumatic-actuator-guide/',
+    category: 'Technology Guide',
+    date: 'Aug 24, 2026',
+    readTime: 16,
+    desc: 'What is a pneumatic actuator? Rack and pinion vs scotch yoke vs linear, torque math, air supply, fail-safe logic and a complete buyer checklist.',
+  },
+  {
+    title: 'Rack and Pinion vs Scotch Yoke Actuator: Which One for Your Valve?',
+    href: '/blog/rack-and-pinion-vs-scotch-yoke/',
+    category: 'Comparison',
+    date: 'Aug 23, 2026',
+    readTime: 10,
+    desc: 'Torque profile, cost, size range and application fit — a practical comparison of the two dominant quarter-turn actuator mechanisms.',
+  },
+  {
+    title: 'Double Acting vs Spring Return Pneumatic Actuator: Fail-Safe Logic Explained',
+    href: '/blog/double-acting-vs-spring-return/',
+    category: 'Comparison',
+    date: 'Aug 23, 2026',
+    readTime: 9,
+    desc: 'When air is lost, what does your valve do? Understanding FC/FO fail positions and how to choose between double acting and single acting designs.',
+  },
+  {
+    title: 'How to Calculate Pneumatic Actuator Torque: A Step-by-Step Guide',
+    href: '/blog/actuator-torque-calculation/',
+    category: 'How-to',
+    date: 'Aug 22, 2026',
+    readTime: 12,
+    desc: 'Valve breakaway torque, seat torque, safety factors and air pressure — how to size an actuator so it opens and closes your valve reliably.',
+  },
+  {
+    title: 'ISO 5211 Explained: Actuator to Valve Mounting Standard',
+    href: '/blog/iso-5211-mounting-standard/',
+    category: 'Technology Guide',
+    date: 'Aug 22, 2026',
+    readTime: 8,
+    desc: 'F10, F12, F14 mounting patterns and how ISO 5211 ensures any actuator fits any valve — plus NAMUR accessory interfaces.',
+  },
+  {
+    title: 'Pneumatic Actuator for Butterfly Valve: Selection Guide',
+    href: '/blog/butterfly-valve-actuator-selection/',
+    category: 'Buying Guide',
+    date: 'Aug 21, 2026',
+    readTime: 11,
+    desc: 'Why butterfly valves need quarter-turn actuation, torque requirements by size, and actuator accessories you should plan for.',
+  },
+  {
+    title: 'Spring Return Actuator Working Principle: How Fail-Safe Works',
+    href: '/blog/spring-return-working-principle/',
+    category: 'Technology Guide',
+    date: 'Aug 21, 2026',
+    readTime: 9,
+    desc: 'From air stroke to spring stroke — how spring return actuators close (or open) valves when pressure drops, and how spring sets are sized.',
+  },
+  {
+    title: 'Pneumatic Actuator Maintenance: 7 Practices That Extend Service Life',
+    href: '/blog/actuator-maintenance-guide/',
+    category: 'Maintenance',
+    date: 'Aug 20, 2026',
+    readTime: 8,
+    desc: 'Air quality, lubrication, seal inspection, cycle testing and torque verification — a practical maintenance routine for quarter-turn actuators.',
+  },
+  {
+    title: 'ATEX Pneumatic Actuators: Explosion-Proof Valve Automation Explained',
+    href: '/blog/atex-pneumatic-actuators/',
+    category: 'Technology Guide',
+    date: 'Aug 20, 2026',
+    readTime: 10,
+    desc: 'Why pneumatic actuators are inherently safer in hazardous areas, ATEX zones, and what certification to specify for oil & gas duty.',
+  },
+  {
+    title: 'Pneumatic Actuator vs Electric Actuator: Which Drives Your Valve?',
+    href: '/blog/pneumatic-vs-electric-actuator/',
+    category: 'Comparison',
+    date: 'Aug 19, 2026',
+    readTime: 11,
+    desc: 'Cycle speed, torque density, explosion safety, installed cost and control precision — an honest comparison for plant engineers.',
+  },
+  {
+    title: 'Solenoid Valves and Limit Switches: Pneumatic Actuator Accessories Guide',
+    href: '/blog/actuator-accessories-guide/',
+    category: 'Buying Guide',
+    date: 'Aug 19, 2026',
+    readTime: 9,
+    desc: 'NAMUR solenoid valves, limit switch boxes, positioners, air filter regulators and manual overrides — what each accessory does and when you need it.',
+  },
+  {
+    title: 'Pneumatic Actuator Valve Sizing: Matching Actuator to Ball Valve',
+    href: '/blog/ball-valve-actuator-sizing/',
+    category: 'How-to',
+    date: 'Aug 18, 2026',
+    readTime: 10,
+    desc: 'Ball valve torque by size and pressure class, actuator safety factor, and how to spec a complete actuated ball valve package.',
+  },
+];
+---
+
+<Layout title="Pneumatic Actuator Blog | Valve Automation Guides | PNEUMACTUATOR" description="Engineering guides on pneumatic valve actuators: torque calculation, rack and pinion vs scotch yoke, spring return fail-safe, ISO 5211 mounting, ATEX and maintenance.">
+  <section class="bg-navy-950 text-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <p class="text-sm font-semibold text-night-green">RESOURCE CENTER</p>
+      <h1 class="mt-2 text-4xl font-extrabold tracking-tight">Pneumatic Actuator Guides</h1>
+      <p class="mt-3 max-w-2xl text-lg text-slate-300">Practical engineering knowledge for valve distributors, automation integrators and plant engineers — no fluff, no jargon.</p>
+    </div>
+  </section>
+
+  <section class="bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((p) => (
+          <a href={p.href} class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-brand-blue/40 hover:shadow-lg">
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-blue">{p.category}</p>
+              <h2 class="mt-2 text-lg font-bold leading-snug text-navy-950 group-hover:text-brand-blue">{p.title}</h2>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">{p.desc}</p>
+              <p class="mt-4 text-xs text-slate-400">{p.date} · {p.readTime} min read</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Need Actuator Selection Support?"
+    subtitle="Send us your valve model and operating conditions — our engineers size the actuator and quote within 24 hours."
+  />
+</Layout>

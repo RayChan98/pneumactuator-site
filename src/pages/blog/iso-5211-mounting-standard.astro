@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostTemplate from '../../components/BlogPostTemplate.astro';
+
+const props = {
+  title: 'ISO 5211 Explained: Actuator to Valve Mounting Standard',
+  category: 'Technology Guide',
+  date: '2026-08-22',
+  readTime: 8,
+  author: 'Ray Chan',
+  toc: [
+    { id: 'snapshot', label: 'The Snapshot' },
+    { id: 'what-is-iso-5211', label: 'What Is ISO 5211?' },
+    { id: 'flange-table', label: 'ISO 5211 Flange Sizes: F03 to F25 Reference Table' },
+    { id: 'how-flange-works', label: 'How the Flange Interface Works' },
+    { id: 'drive-interface', label: 'The Drive Interface: Double-D, Square and Keyed' },
+    { id: 'namur', label: 'NAMUR VDI/VDE 3845: The Accessory Interface' },
+    { id: 'why-it-matters', label: 'Why ISO 5211 Matters for Buyers and Integrators' },
+    { id: 'how-to-verify', label: 'How to Verify Mounting Dimensions Before You Buy' },
+    { id: 'questions', label: 'Questions Buyers Ask' },
+    { id: 'bottom-line', label: 'The Bottom Line' },
+  ],
+  related: [
+    { href: '/blog/actuator-accessories-guide/', title: 'Solenoid Valves and Limit Switches: Pneumatic Actuator Accessories Guide', readTime: 9 },
+    { href: '/blog/pneumatic-actuator-guide/', title: 'Pneumatic Actuator Guide 2026: Complete Buyer Manual for Valve Automation', readTime: 16 },
+    { href: '/blog/actuator-torque-calculation/', title: 'How to Calculate Pneumatic Actuator Torque: A Step-by-Step Guide', readTime: 12 },
+    { href: '/blog/butterfly-valve-actuator-selection/', title: 'Pneumatic Actuator for Butterfly Valve: Selection Guide', readTime: 11 },
+  ],
+};
+---
+
+<Layout title="ISO 5211 Explained: Actuator to Valve Mounting Standard | PNEUMACTUATOR" description="What is ISO 5211? Full F03-F25 flange dimension table, drive shaft sizes, NAMUR VDI/VDE 3845 accessory interface, and how to verify mounting dimensions before you buy.">
+  <BlogPostTemplate {...props}>
+    <!-- Blog Intro 引言 -->
+    <p class="text-lg leading-relaxed"><strong>A new actuator lands on the bench, the valve is already in the line, and the four bolt holes on the actuator flange sit a few millimeters off the pattern on the valve top. The job stops, a bracket has to be made, and the "direct mount" everyone quoted on turns into a field fabrication.</strong> This is the exact failure mode ISO 5211 exists to eliminate. It is the international standard that defines how part-turn actuators bolt to quarter-turn valves — the flange bolt circle, the bolt thread and count, the centering register, and the drive shaft geometry between the two. When the flange code on an actuator (F05, F07, F10 and so on) matches the code on the valve, the two are designed to mate directly, no adapter plate required.</p>
+    <p class="text-lg leading-relaxed">This guide explains what ISO 5211 covers, gives a reference table of the common flange sizes from F03 to F25, walks through the drive shaft interface that actually transmits torque, covers the NAMUR VDI/VDE 3845 accessory mounting standard on the top of the actuator, and finishes with a practical checklist for verifying mounting dimensions before you place an order. It is written for valve distributors, automation integrators and plant engineers who need to pair actuators with valves and get the fit right the first time.</p>
+    <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
+
+    <h2 id="snapshot">The Snapshot</h2>
+    <ul>
+      <li>ISO 5211 is the international standard for part-turn (quarter-turn) actuator-to-valve attachments — it standardizes the mounting flange dimensions and the drive coupling between actuator and valve.</li>
+      <li>Flange codes run from F03 up through F25, F30 and beyond; the number relates to the bolt circle diameter. Common sizes for pneumatic actuators on industrial valves are F05, F07, F10, F12 and F14, with F16 and F25 on larger, high-torque duty.</li>
+      <li>The three numbers that decide a fit are: the flange code (bolt circle + bolt thread + bolt count), the drive size and type (double-D, square or keyed), and the centering register diameter. All three must match between actuator and valve.</li>
+      <li>ISO 5211 does not specify torque or pressure ratings — it only defines the mechanical interface. Matching the flange is necessary but not sufficient; torque sizing is a separate step (see our torque calculation guide).</li>
+      <li>On the opposite side of the actuator, the NAMUR interface (VDI/VDE 3845) standardizes accessory mounting for limit switch boxes, positioners and solenoid valves — typically a 30×80 mm or 80×130 mm pattern of M5 holes.</li>
+    </ul>
+
+    <h2 id="what-is-iso-5211">What Is ISO 5211?</h2>
+    <p>ISO 5211, officially titled <em>Industrial valves — Part-turn actuator attachments</em>, is the international standard that governs how part-turn actuators connect to quarter-turn valves: ball valves, butterfly valves and plug valves. It standardizes two specific interfaces rather than the actuator or valve themselves.</p>
+    <p>The first is the <strong>flange connection</strong> — the mounting pad where the actuator sits on the valve top, defined by the bolt circle diameter (the pitch circle on which the mounting holes are arranged), the number of bolts, the bolt thread size, and the centering register (spigot) that pilots the actuator into position. The second is the <strong>drive interface</strong> — the shape and dimensions of the coupling that transmits torque between the valve stem and the actuator output, whether double-D, square or keyed.</p>
+    <p>Because the standard fixes these dimensions, an actuator from one manufacturer can mount on a valve from another as long as both sides carry the same flange code. A rack and pinion pneumatic actuator with an F07 pattern will sit directly on any F07 valve top from any maker — no custom bracket, no drilling, no machining. That interchangeability is the whole point of the standard, and it is why ISO 5211 codes appear on nearly every modern quarter-turn actuator and actuated valve datasheet. For a broader look at how actuators are specified around this interface, our <a href="/blog/pneumatic-actuator-guide/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">pneumatic actuator buyer manual</a> covers the full selection flow.</p>
+
+    <h2 id="flange-table">ISO 5211 Flange Sizes: F03 to F25 Reference Table</h2>
+    <p>The flange code letter "F" followed by a number is the language of actuator-to-valve fit. The number does not equal the bolt circle in millimeters — it is a size designation that maps to a defined bolt circle, bolt thread and bolt count. The table below lists the flange sizes most relevant to pneumatic actuation, from the compact F03 up to the heavy F25. Values shown are the widely published standard dimensions; bolt threads are metric per the ISO standard, with imperial equivalents used on North American products per MSS SP-101.</p>
+    <table>
+      <thead>
+        <tr><th>Flange code</th><th>Bolt circle Ø (PCD, mm)</th><th>Centering register Ø (mm)</th><th>Bolt thread</th><th>No. of bolts</th><th>Typical torque class (Nm)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>F03</td><td>36</td><td>25</td><td>M5</td><td>4</td><td>~32</td></tr>
+        <tr><td>F04</td><td>42</td><td>30</td><td>M5</td><td>4</td><td>~63</td></tr>
+        <tr><td>F05</td><td>50</td><td>35</td><td>M6</td><td>4</td><td>~125</td></tr>
+        <tr><td>F07</td><td>70</td><td>55</td><td>M8</td><td>4</td><td>~250</td></tr>
+        <tr><td>F10</td><td>102</td><td>70</td><td>M10</td><td>4</td><td>~500</td></tr>
+        <tr><td>F12</td><td>125</td><td>85</td><td>M12</td><td>4</td><td>~1,000</td></tr>
+        <tr><td>F14</td><td>140</td><td>100</td><td>M16</td><td>4</td><td>~2,000</td></tr>
+        <tr><td>F16</td><td>165</td><td>130</td><td>M20</td><td>4</td><td>~4,000</td></tr>
+        <tr><td>F25</td><td>254</td><td>200</td><td>M16</td><td>8</td><td>~8,000</td></tr>
+        <tr><td>F30</td><td>298</td><td>230</td><td>M20</td><td>8</td><td>~16,000</td></tr>
+      </tbody>
+    </table>
+    <p><strong>How to read it:</strong> the bolt circle (PCD) is the diameter of the circle passing through the centers of the mounting holes — the single dimension that tells you whether two flanges line up. The centering register is the pilot diameter on the valve top (or the recess in the actuator) that locates the two parts concentrically before the bolts take the load. The torque classes shown are indicative published ratings that double roughly with each flange step; they vary with bolt grade, flange material and drive configuration, so treat them as a ballpark and confirm against the actual actuator and valve datasheets rather than designing to them.</p>
+    <p>Larger flanges exist (F35, F40, F48 and beyond) for very high-torque and large-bore service, but F05–F16 covers the bulk of pneumatic actuator work on industrial process valves, and F25/F30 appears on larger butterfly valves and high-pressure ball valves. Beyond the F-series, the same standard family also covers multi-turn actuator attachment (ISO 5210), which is the one to check if your application is rising-stem rather than quarter-turn.</p>
+
+    <h2 id="how-flange-works">How the Flange Interface Works</h2>
+    <p>Understanding the mechanics of the flange makes datasheet reading straightforward. When an actuator mounts on a valve, three things happen at once:</p>
+    <h3>1. Location by the register</h3>
+    <p>The centering register (spigot) on the valve top enters the corresponding recess in the actuator base. This pilots the actuator concentrically with the valve stem, so the drive coupling engages true rather than off-center. A register that is too small for the recess leaves the coupling sloppy; a register that is too large simply will not enter.</p>
+    <h3>2. Clamping by the bolts</h3>
+    <p>The mounting bolts carry the separation and shear loads. Depending on the product, the flange holes are either tapped (threaded) or drilled through for clearance, and some flanges are arranged for studs and nuts. On small actuators you will also commonly see <strong>dual-pattern flanges</strong> — two sets of hole patterns on one flange, such as F05/F07 or F07/F10 — which let one actuator cover two valve sizes and simplify stockholding.</p>
+    <h3>3. Engagement of the drive</h3>
+    <p>While the flange bolts locate and clamp, the drive coupling transmits the torque. The valve stem (male) enters the actuator output socket (female), and the fit between them — not the bolts — carries the rotation. This is why matching the flange alone is not enough: two F07 components with different stem sizes still will not engage correctly. The drive interface is covered in the next section.</p>
+    <p>A practical consequence of this three-part fit: when someone says a "valve is F10" or an "actuator is F07", they are only describing the flange. The complete fit requires the flange code, the drive size and the register to be checked together.</p>
+
+    <h2 id="drive-interface">The Drive Interface: Double-D, Square and Keyed</h2>
+    <p>The drive coupling is where torque actually transfers from actuator to valve stem, and ISO 5211 standardizes the common configurations: double-D (two parallel flats), square, and keyed (key-and-keyway) drives. Each is measured differently, and mixing them up is a common source of field mismatches.</p>
+    <h3>Double-D</h3>
+    <p>A double-D stem has two parallel flats machined on opposite sides, and the actuator socket is a matching female profile. The size is quoted as the flat-to-flat dimension across the flats. Double-D is the most common drive on pneumatic rack and pinion actuators because it engages without rotational slop and self-centers on assembly.</p>
+    <h3>Square</h3>
+    <p>A square stem is measured across flats (AF). Square drives are common on electric actuators and on valves with square stems; the female socket in the actuator is a square broach. Some actuators ship with interchangeable drive inserts so the same actuator body can accept double-D or square stems of a given size.</p>
+    <h3>Keyed</h3>
+    <p>Keyed drives use a key seated in a keyway between the stem and the socket, typically on larger sizes where a single key transmits the torque. They are less common on small pneumatic actuators and more common on high-torque units where the coupling is sized for heavy duty.</p>
+    <p>Typical stem sizes on industrial actuators run in a familiar ladder of standard dimensions — around 11, 14, 17, 22, 27, 36 and 46 mm flat-to-flat on double-D drives — with the smaller sizes (11–14 mm) on F05/F07 flanges, mid sizes (17–22 mm) on F10/F12, and the larger sizes (27–46 mm) on F14/F16 and above. The exact size offered per flange varies by manufacturer, so the correct habit is to read the actual stem dimension from the valve datasheet and confirm the actuator's socket insert matches, rather than assuming the flange code implies a drive size. Shaft engagement length matters too: a short stem in a deep socket is fine, but a socket too shallow for the stem leaves the coupling under-engaged.</p>
+
+    <h2 id="namur">NAMUR VDI/VDE 3845: The Accessory Interface</h2>
+    <p>While ISO 5211 defines the bottom of the actuator (the valve side), the top of the actuator is governed by a complementary standard: NAMUR, formally VDI/VDE 3845, the German guideline for mounting accessories on valve actuators. It defines the hole pattern and shaft dimensions that let limit switch boxes, positioners and solenoid valves mount directly onto the actuator top without brackets.</p>
+    <p>There are two NAMUR mounting versions in common use:</p>
+    <ul>
+      <li><strong>Version 1:</strong> a 30×80 mm rectangular pattern of four M5 threaded holes, with a drive shaft up to about 14 mm. This is the pattern used by most compact limit switch boxes and NAMUR solenoid valves.</li>
+      <li><strong>Version 2:</strong> a larger 80×130 mm pattern of four M5 holes with a shaft up to roughly 22 mm, used for bigger accessory housings, positioners and heavier switch boxes.</li>
+    </ul>
+    <p>Two NAMUR-related details trip up buyers. First, a "NAMUR solenoid valve" uses the same 30×80 mm pattern to bolt directly to the actuator top, with its pilot ports connecting to the actuator's air ports through the interface — no tubing between solenoid and actuator. Second, NAMUR is not part of ISO 5211; the two standards live on opposite faces of the actuator and serve different purposes, but they are so often quoted together that the pairing has become the de facto packaging for pneumatic actuators. For a full breakdown of solenoid valves, limit switches and positioners, see our <a href="/blog/actuator-accessories-guide/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">actuator accessories guide</a>.</p>
+
+    <h2 id="why-it-matters">Why ISO 5211 Matters for Buyers and Integrators</h2>
+    <p>The standard saves real money and real time across the supply chain, and its value shows up in a few distinct places.</p>
+    <h3>Interchangeability across brands</h3>
+    <p>Because the flange and drive dimensions are standardized, an actuator from one manufacturer pairs with a valve from another on the same F-code. For distributors this means stocking actuators separately from valves and quoting combinations confidently; for plants it means a failed actuator can be swapped for any compliant replacement without modifying the valve.</p>
+    <h3>No custom fabrication</h3>
+    <p>Before ISO 5211 became universal, actuator-to-valve mounting often meant brackets, adapters and on-site drilling. A correct match today is direct bolt-up: the register centers it, the bolts clamp it, the drive engages. That removes a whole class of field work and the alignment problems that come with adapters.</p>
+    <h3>Fewer stock-keeping units</h3>
+    <p>Dual-pattern flanges and interchangeable drive inserts let one actuator body serve multiple valve patterns. A rack and pinion actuator with an F05/F07 dual flange and a couple of drive inserts covers a range of valve sizes from one shelf line — a meaningful simplification for both manufacturers and distributors.</p>
+    <h3>Replacement and upgrades</h3>
+    <p>When a valve stays in the line and only the actuator is replaced — for example, moving from manual to pneumatic operation, or from a spring return to a double acting unit — the ISO 5211 pattern on the valve top determines whether the new actuator bolts straight on. Checking the F-code before quoting avoids the awkward discovery that the valve top is a non-standard pattern.</p>
+    <p>One caveat worth repeating: the standard does not rate torque. An F07 flange will bolt to an F07 valve even if the actuator is far too weak or too strong for the valve's torque demand. Flange fit and torque sizing are separate decisions — the flange gets the parts together, the torque calculation (with safety factor) makes sure the package actually operates the valve. Our <a href="/blog/actuator-torque-calculation/" class="font-medium text-brand-blue underline decoration-brand-blue/40 underline-offset-4 transition hover:decoration-brand-blue">actuator torque calculation guide</a> covers that half of the job.</p>
+
+    <h2 id="how-to-verify">How to Verify Mounting Dimensions Before You Buy</h2>
+    <p>Verifying a fit takes about ten minutes with a caliper and the two datasheets. This is the sequence that catches mismatches before they become field problems.</p>
+    <h3>1. Measure the valve top flange</h3>
+    <p>Find the bolt circle diameter (PCD) by measuring between opposite holes and adding one hole diameter, or measure between adjacent holes and use the datasheet. Count the holes and note the thread — M5, M6, M8, M10, M12, M16 or M20, per the table above. This gives you the F-code on the valve side.</p>
+    <h3>2. Measure the valve stem</h3>
+    <p>For double-D, measure flat-to-flat across the two flats. For square, measure across flats. Note the stem length above the flange and its shape — square, double-D or keyed. This is the number that must match the actuator's drive insert.</p>
+    <h3>3. Measure the register</h3>
+    <p>Measure the spigot diameter on the valve top (or the recess in the actuator base). Compare it with the register column in the table. A close match is what you want — this is a pilot fit, not a press fit.</p>
+    <h3>4. Compare both sides of the actuator</h3>
+    <p>An actuator has two interfaces: the bottom flange (ISO 5211, valve side) and the top (NAMUR, accessory side). Confirm the bottom flange and drive insert against the valve measurements, and separately confirm the top pattern (30×80 or 80×130) against the limit switch box or positioner you intend to mount.</p>
+    <h3>5. Check bolt length and access</h3>
+    <p>Bolts must be long enough to engage the tapped holes (or clear the through holes) without bottoming out, and short enough not to collide with internals on the blind side. Also confirm whether the actuator base has clearance for the valve stem and any raised boss around it.</p>
+    <h3>6. Verify torque separately</h3>
+    <p>Once the mechanical fit checks out, run the torque calculation for your valve size, pressure class and safety factor. If the actuator's output torque at your supply pressure does not clear the valve's breakaway torque, the fit is correct but the package will still fail in service.</p>
+    <p>If any dimension is uncertain, the fastest fix is to send a sketch or photo of the valve top with measured dimensions to the actuator manufacturer and let their engineers confirm the match. At PNEUMACTUATOR, that is part of the standard selection support we offer — send the valve model and drawings, and we confirm the flange, drive and accessory interface before quoting.</p>
+
+    <h2 id="questions">Questions Buyers Ask</h2>
+    <h3>1. Is ISO 5211 the same as NAMUR?</h3>
+    <p>No. ISO 5211 defines the actuator-to-valve interface on the bottom of the actuator (flange + drive). NAMUR (VDI/VDE 3845) defines the accessory interface on the top of the actuator (30×80 mm and 80×130 mm patterns for switch boxes, positioners and solenoid valves). They are complementary and usually quoted together on pneumatic actuator datasheets.</p>
+    <h3>2. Can an F07 actuator mount on an F05 valve?</h3>
+    <p>Only with an adapter bracket. Adapters exist and are used in retrofit work, but they add stack height, introduce an extra bolted joint, and can reduce the rigidity of the package. When sourcing new, the cleaner path is to match the F-code between actuator and valve — or choose an actuator with a dual-pattern flange that includes the valve's pattern.</p>
+    <h3>3. Do the flange bolts carry the torque?</h3>
+    <p>No. The bolts clamp the flange and carry separation and shear loads; the drive coupling (double-D, square or keyed) transmits the rotation. That is why a flange match alone is not a complete fit — the drive size must match too.</p>
+    <h3>4. Does ISO 5211 apply to electric actuators?</h3>
+    <p>Yes. ISO 5211 covers part-turn actuator attachments regardless of the power source. Electric quarter-turn actuators use the same F-codes, and linear / multi-turn actuators use the related standard ISO 5210.</p>
+    <h3>5. Are the flange holes tapped or through?</h3>
+    <p>Both are used. Actuator base flanges commonly have tapped holes, valve top flanges are often drilled through for clearance, and some combinations use studs with nuts. Check the drawings on both sides and specify the bolt set accordingly — the thread size in the table above is the one that must agree.</p>
+    <h3>6. What happens if the valve top is a non-standard pattern?</h3>
+    <p>It still happens on older valves and some regional products. Options include adapter brackets, re-machining the valve top (costly and not always advisable), or replacing the valve top works / bonnet with a standard pattern. For a new valve order, specifying "ISO 5211 pattern" up front avoids the problem entirely.</p>
+
+    <h2 id="bottom-line">The Bottom Line</h2>
+    <p>ISO 5211 is the shared language of actuator-to-valve fit: one flange code, one bolt thread, one drive size. Get those three numbers right and any compliant actuator mounts on any compliant valve with no bracket, no machining and no surprises — which is exactly what a distributor quoting a package or a plant swapping a failed actuator needs. Match the flange and drive mechanically, then size the torque separately, and the package is sound. When you are ready to spec actuators, send us your valve drawings and operating conditions — our engineers confirm the ISO 5211 flange, drive and NAMUR interface and quote within 24 hours.</p>
+  </BlogPostTemplate>
+</Layout>

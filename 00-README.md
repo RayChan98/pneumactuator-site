@@ -46,6 +46,9 @@ pneumatic-actuator-site/
 
 - [x] 部署上线（pneumactuator.pages.dev）— 线上与本地 dist sha256 一致
 - [x] 飞书网站记录表留痕（2026-08-25 PNEUMACTUATOR 记录表已建，39 页录入）
+- [x] git 版本控制（2026-08-25 → RayChan98/pneumactuator-site，public/main）
 - [ ] 正式域名（等总控拍板，走 CF Registrar）
 - [ ] Semrush 词表回填（词级 vol）
 - [ ] logo 5 件套（Trae 或 AI 生成）
+
+> ⚠️ 后续 git push：本机 `NO_PROXY` 含 github.com 会直连被墙，必须 `env -u NO_PROXY -u no_proxy https_proxy=http://127.0.0.1:7897 git push`

@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostTemplate from '../../components/BlogPostTemplate.astro';
+
+const props = {
+  title: 'Pneumatic Actuator Air Consumption: How to Calculate It (With Worked Examples)',
+  category: 'How-to',
+  date: '2026-08-25',
+  readTime: 12,
+  author: 'Ray Chan',
+  toc: [
+    { id: 'snapshot', label: 'The Snapshot' },
+    { id: 'why-it-matters', label: 'Why Air Consumption Matters (Beyond the Compressor Bill)' },
+    { id: 'the-formula', label: 'The Formula: Free Air vs Compressed Air' },
+    { id: 'step1-bore-stroke', label: 'Step 1: Find the Actuator Volume' },
+    { id: 'step2-pressure', label: 'Step 2: Convert to Free Air at Your Supply Pressure' },
+    { id: 'step3-cycles', label: 'Step 3: Multiply by Cycle Frequency' },
+    { id: 'example-rack-pinion', label: 'Worked Example 1: Rack & Pinion on a Ball Valve' },
+    { id: 'example-scotch-yoke', label: 'Worked Example 2: Scotch Yoke on a Large Butterfly Valve' },
+    { id: 'solenoid-leakage', label: 'Don\'t Forget: Solenoid Pilot and Positioner Bleed' },
+    { id: 'compressor-sizing', label: 'From Actuators to Compressor Size' },
+    { id: 'reducing-consumption', label: 'Seven Ways to Cut Air Consumption' },
+    { id: 'bottom-line', label: 'The Bottom Line' },
+  ],
+  related: [
+    { href: '/blog/actuator-torque-calculation/', title: 'How to Calculate Actuator Torque', readTime: 12 },
+    { href: '/blog/pneumatic-actuator-positioner-guide/', title: 'Pneumatic Actuator Positioner Guide', readTime: 13 },
+    { href: '/blog/double-acting-vs-spring-return/', title: 'Double Acting vs Spring Return', readTime: 9 },
+    { href: '/blog/actuator-maintenance-guide/', title: 'Actuator Maintenance Guide', readTime: 11 },
+  ],
+};
+---
+
+<Layout title="Pneumatic Actuator Air Consumption: How to Calculate It (With Worked Examples) | PNEUMACTUATOR" description="Calculate pneumatic actuator air consumption: cylinder volume, free air conversion at supply pressure, cycle frequency, plus worked examples for rack & pinion and scotch yoke actuators and compressor sizing.">
+  <BlogPostTemplate {...props}>
+    <p class="text-lg leading-relaxed"><strong>Every pneumatic actuator on your plant is quietly spending money every time it cycles — and most plants cannot tell you how much.</strong> A rack and pinion actuator with an 80 mm bore cycling a ball valve 12 times a minute through a 90° stroke draws roughly 15-20 litres of free air per minute at 5.5 bar. Scale that across a hundred valves, add the positioners that bleed air continuously and the leaks nobody has time to chase, and the compressor room is the answer to a question nobody asked: why the energy bill keeps creeping up.</p>
+    <p class="text-lg leading-relaxed">This guide gives you the three-step calculation that works for any pneumatic actuator — find the swept volume, convert it to free air at your actual supply pressure, multiply by cycle frequency — with fully worked examples for a rack & pinion actuator on a ball valve and a scotch yoke on a large butterfly valve. It also covers the hidden consumers (solenoid pilots, positioner bleed, leaks), how to turn actuator demand into compressor size, and seven practical ways to cut consumption without touching process reliability.</p>
+    <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
+
+    <h2 id="snapshot">The Snapshot</h2>
+    <ul>
+      <li>Air consumption = swept volume × (supply pressure in bar absolute ÷ 1.013) × cycles per minute — the result is free air (litres per minute at atmospheric conditions), which is what compressor specs use.</li>
+      <li>A double-acting actuator consumes air on both strokes, so swept volume counts twice per cycle; a spring-return actuator consumes air only on the air stroke, and the spring stroke exhausts.</li>
+      <li>A typical 80 mm bore rack & pinion actuator consumes roughly 0.8-1.2 L free air per 90° cycle at 5.5 bar — about 10-24 L/min at 12-20 cycles per minute.</li>
+      <li>Positioners bleed 0.5-5 L/min continuously at steady state; solenoid pilots add 2-8 L/min per actuation burst. Together they often rival the actuators themselves.</li>
+      <li>A 10% supply pressure reduction cuts consumption by roughly 10% at constant cycle rate — one of the cheapest efficiency wins on a pneumatic system.</li>
+    </ul>
+
+    <h2 id="why-it-matters">Why Air Consumption Matters (Beyond the Compressor Bill)</h2>
+    <p>Compressed air is typically the most expensive utility on an industrial site — around 7-10 kW of compressor power per 1,000 L/min of free air delivered, before dryers and leaks. But consumption figures also decide three engineering questions:</p>
+    <ul>
+      <li><strong>Compressor sizing:</strong> undersize it and plant pressure sags when a batch of valves cycles together, which shows up as slow stroking and valve failure; oversize it and you bleed money on unloaded running.</li>
+      <li><strong>Receiver sizing:</strong> the air receiver must cover the peak demand of simultaneous actuations without the compressor kicking in.</li>
+      <li><strong>Line sizing:</strong> a 10 mm nylon line feeding an actuator that needs 200 L/min for a fast stroke will choke the actuator regardless of how big the compressor is.</li>
+    </ul>
+    <p>Getting the number right once per valve saves a lot of guessing later.</p>
+
+    <h2 id="the-formula">The Formula: Free Air vs Compressed Air</h2>
+    <p>The single most common mistake is comparing compressed-air volumes with free-air volumes. A litre of air at 6 bar gauge is not a litre of air — compressed, it contains roughly 7 litres of free air (6 bar gauge + 1.013 bar atmospheric, all at the same temperature). Compressor catalogs, dryers and energy audits all work in free air (FAD, free air delivered); actuator catalogs usually quote cylinder volume in geometric litres.</p>
+    <p>So the formula is:</p>
+    <p class="rounded-lg bg-slate-100 p-4 font-mono text-sm">Free air per stroke (L) = Swept volume (L) × (P_gauge + 1.013) / 1.013<br/>Free air per minute (L/min) = Free air per stroke × strokes per minute</p>
+    <p>For a double-acting actuator, one cycle (open + close) = two strokes, so:</p>
+    <p class="rounded-lg bg-slate-100 p-4 font-mono text-sm">Free air per cycle (L) = 2 × Swept volume × (P_gauge + 1.013) / 1.013</p>
+
+    <h2 id="step1-bore-stroke">Step 1: Find the Actuator Volume</h2>
+    <p>Quarter-turn actuators (rack & pinion, scotch yoke, vane) are cylinders that rotate 90° (or up to 120° for some yokes). The swept volume per 90° stroke is the piston area times the piston travel. Manufacturer datasheets usually quote it directly — look for "displacement" or "volume per 90°" in litres or cm³. Typical values at 5.5 bar for common sizes:</p>
+    <table>
+      <thead><tr><th>Actuator Size (cylinder bore)</th><th>Approx. displacement per 90° (L)</th><th>Free air per 90° cycle, double-acting @ 5.5 bar (L)</th></tr></thead>
+      <tbody>
+        <tr><td>32 mm</td><td>0.10-0.15</td><td>1.3-1.9</td></tr>
+        <tr><td>52 mm</td><td>0.25-0.35</td><td>3.2-4.5</td></tr>
+        <tr><td>80 mm</td><td>0.60-0.85</td><td>7.7-10.9</td></tr>
+        <tr><td>110 mm</td><td>1.2-1.6</td><td>15.4-20.5</td></tr>
+        <tr><td>160 mm</td><td>2.5-3.4</td><td>32.1-43.6</td></tr>
+        <tr><td>250 mm</td><td>6.0-8.0</td><td>77-103</td></tr>
+      </tbody>
+    </table>
+    <p>These are indicative ranges — always take the displacement from the specific actuator datasheet, because stroke length and yoke ratios vary between manufacturers.</p>
+
+    <h2 id="step2-pressure">Step 2: Convert to Free Air at Your Supply Pressure</h2>
+    <p>Take the swept volume and multiply by the absolute pressure ratio. Gauge pressure 5.5 bar gives:</p>
+    <p class="rounded-lg bg-slate-100 p-4 font-mono text-sm">(5.5 + 1.013) / 1.013 = 6.43</p>
+    <p>So a 0.7 L swept volume consumes 0.7 × 6.43 ≈ 4.5 L of free air per stroke, or 9 L per double-acting cycle. At 6.0 bar the multiplier is 6.92 (+7.6%); at 7.0 bar it is 7.91 (+23%). Pressure is the biggest lever in the formula — which is exactly why the sizing advice everywhere says run the lowest supply pressure your actuators can live with.</p>
+
+    <h2 id="step3-cycles">Step 3: Multiply by Cycle Frequency</h2>
+    <p>Count real cycles, not design cycles. A valve that "could" cycle 20 times a minute but actually cycles 4 times a minute on a batch line consumes a fifth of the air the nameplate suggests. Log actual actuation counts (most smart positioners and limit switch boxes log them) and use the real number for compressor sizing — then add a 20-30% margin for growth and simultaneous demand.</p>
+
+    <h2 id="example-rack-pinion">Worked Example 1: Rack & Pinion on a Ball Valve</h2>
+    <p><strong>Setup:</strong> double-acting rack & pinion, 80 mm bore, displacement 0.75 L per 90°, supply 5.5 bar, cycling 12 times per minute.</p>
+    <p class="rounded-lg bg-slate-100 p-4 font-mono text-sm">Free air per stroke = 0.75 × 6.43 = 4.82 L<br/>Free air per cycle (two strokes) = 9.65 L<br/>Per minute = 9.65 × 12 = 115.7 L/min</p>
+    <p>That is 115.7 L/min free air for one small-ish valve — about 0.8-1.2 kW of compressor load by itself. Twelve of these valves cycling at the same rate and you are a small compressor by yourself, before a single positioner or leak.</p>
+
+    <h2 id="example-scotch-yoke">Worked Example 2: Scotch Yoke on a Large Butterfly Valve</h2>
+    <p><strong>Setup:</strong> double-acting scotch yoke, 250 mm bore, displacement 7.0 L per 90°, supply 6.0 bar, cycling 3 times per minute (throttling duty with occasional full strokes).</p>
+    <p class="rounded-lg bg-slate-100 p-4 font-mono text-sm">Free air per stroke = 7.0 × 6.92 = 48.4 L<br/>Free air per cycle = 96.9 L<br/>Per minute = 96.9 × 3 = 290.6 L/min</p>
+    <p>One large butterfly valve with a scotch yoke eats more air than ten small ball valves. This is why plants put volume boosters on these (faster stroking needs even more instantaneous flow) and why the receiver has to be sized for the peak — a single full stroke here demands nearly 100 L of free air in a few seconds.</p>
+
+    <h2 id="solenoid-leakage">Don't Forget: Solenoid Pilot and Positioner Bleed</h2>
+    <p>Actuator displacement is only part of the story. On a typical valve package:</p>
+    <ul>
+      <li><strong>Solenoid pilot:</strong> a 5/2 solenoid valve with integral pilot bleeds 2-8 L/min free air during the pilot pulse and often has a small continuous bleed depending on design. NAMUR-mounted solenoids on 80 mm and up actuators are the norm.</li>
+      <li><strong>Positioner:</strong> an electro-pneumatic positioner bleeds 0.5-5 L/min continuously at steady state to hold a throttled position — this runs 24/7 even when the valve is not moving. A plant with 50 positioners is spending the equivalent of several small compressors just on positioner bleed.</li>
+      <li><strong>Leaks:</strong> a 1 mm orifice at 5.5 bar leaks roughly 100 L/min free air. A hissing fitting on a valve package is not cosmetic — it is a measurable compressor load.</li>
+    </ul>
+    <p>When sizing, add these as a steady-state baseline on top of the cyclic actuator demand.</p>
+
+    <h2 id="compressor-sizing">From Actuators to Compressor Size</h2>
+    <p>Sum the cyclic demand of all actuators (using real cycle rates), add the continuous bleed of all positioners and pilots, add a 20-30% margin for growth and simultaneous actuation, then add known leak load if you have measured it. Compare against compressor FAD at your site altitude — FAD is quoted at standard conditions and derates with altitude. Then check the receiver: it should hold at least 20-30 seconds of peak demand so the compressor does not short-cycle when a batch of valves opens together.</p>
+
+    <h2 id="reducing-consumption">Seven Ways to Cut Air Consumption</h2>
+    <ol>
+      <li><strong>Lower supply pressure</strong> to the minimum the actuators need (re-check torque at the lower pressure first — this is the single biggest, cheapest win).</li>
+      <li><strong>Fix leaks</strong> — ultrasonic leak detectors find them in minutes; a routine quarterly leak survey pays for itself.</li>
+      <li><strong>Use spring-return actuators</strong> where fail-safe is required anyway: the spring stroke exhausts instead of consuming.</li>
+      <li><strong>Eliminate positioners on on-off valves</strong> — replace with limit switch boxes and cut continuous bleed.</li>
+      <li><strong>Add zone isolation</strong> — shut off air to decommissioned or idle valve trains.</li>
+      <li><strong>Use smaller actuators</strong> where torque margin is over-specified (a 2× torque margin doubles swept volume).</li>
+      <li><strong>Install flow controls properly</strong> — speed controls that meter exhaust air (rather than supply) also reduce effective consumption on fast cycles.</li>
+    </ol>
+
+    <h2 id="bottom-line">The Bottom Line</h2>
+    <p>Air consumption is a three-step arithmetic problem: swept volume × absolute pressure ratio × real cycle rate. Do it once per valve, sum it honestly, and you know your compressor, receiver and line sizes instead of guessing. And because pressure appears linearly in the formula while torque scales with it, dropping from 6.5 bar to 5.5 bar cuts consumption by ~15% while keeping most actuators fully functional — the kind of efficiency win that needs no capital budget, just a regulator and a torque check. If you are specifying a new valve package, ask your supplier for the free-air consumption per cycle at your supply pressure — any manufacturer that cannot answer that number has not designed the package.</p>
+  </BlogPostTemplate>
+</Layout>

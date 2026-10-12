@@ -29,13 +29,21 @@ const props = {
 };
 ---
 
-<Layout title="Pneumatic vs Electric Actuator: Honest Comparison for Plant Engineers | PNEUMACTUATOR" description="Pneumatic vs electric valve actuators compared on cycle speed, torque density, explosion safety, installed cost, control precision and maintenance — with a decision table for plant engineers.">
+<Layout title="Pneumatic vs Electric Actuator: Honest Comparison for Plant..." description="Pneumatic vs electric valve actuators compared on cycle speed, torque density, explosion safety, installed cost, control precision and maintenance — with...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-pneumatic-vs-electric-actuator-01.webp" alt="Mixed automation installation with pneumatic actuators and cable trays" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <!-- Blog Intro 引言 -->
     <p class="text-lg leading-relaxed"><strong>The actuator bolted to a valve is one of the least glamorous and most consequential components on a process line. It converts a control signal into torque, and the pneumatic vs electric decision behind it quietly shapes operating cost, safety compliance and uptime for years.</strong> Choose the wrong drive and you either pay for compressed-air infrastructure a small valve never needed, or watch an electric unit struggle on a duty cycle its motor was never rated for. Both technologies are mature; both fail when they are matched to the wrong service.</p>
     <p class="text-lg leading-relaxed">This guide compares them on the seven axes that actually decide an order: cycle speed, torque density, explosion safety, installed cost, control precision, maintenance and fail-safe behavior. You will get concrete numbers where they exist, an honest note where the answer depends on your site, and a decision table you can take into a design review. No winner is declared at the end — the right answer is a function of duty cycle, air availability and process risk.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-pneumatic-vs-electric-actuator-02.webp" alt="Installers working on pumps and pipe racks at an industrial site" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Installers working on pumps and pipe racks at an industrial site</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li><strong>Cycle speed:</strong> pneumatic quarter-turn actuators typically complete a 90° stroke in 1–5 seconds (our DA-series spec) and speed is tuned with simple flow control valves. Electric units commonly need several seconds to tens of seconds as torque and gear reduction rise.</li>

@@ -28,13 +28,21 @@ const props = {
 };
 ---
 
-<Layout title="Pneumatic Actuator Maintenance: 7 Practices That Extend Service Life | PNEUMACTUATOR" description="Pneumatic actuator maintenance guide: air quality and filtration, lubrication, seal inspection, cycle and partial stroke testing, torque verification, common faults and a full maintenance schedule table.">
+<Layout title="Pneumatic Actuator Maintenance: 7 Practices That Extend..." description="Pneumatic actuator maintenance guide: air quality and filtration, lubrication, seal inspection, cycle and partial stroke testing, torque verification...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-actuator-maintenance-guide-01.webp" alt="Maintenance technician inspecting pneumatic actuators in a plant" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <!-- Blog Intro 引言 -->
     <p class="text-lg leading-relaxed"><strong>Most pneumatic actuator failures are not sudden — they announce themselves for weeks in a slightly slower stroke, a whisper of air at an end cap, or a valve that seats a little harder every month.</strong> On a quarter-turn valve that must close when the air drops, that whisper can become a line-down event or, in a safety-instrumented loop, something worse. In practice, the same few root causes show up again and again: contaminated air, dried-out lubrication, worn seals and unchecked torque drift. All of them are addressable with a routine that costs a few hours a quarter.</p>
     <p class="text-lg leading-relaxed">This guide lays out seven maintenance practices for quarter-turn pneumatic actuators, the schedule to run them on, and the fault patterns to watch for between inspections. It covers air quality, lubrication, seal and O-ring checks, cycle and partial stroke testing, torque verification, external inspection and record keeping — the routine that separates actuators that reach their rated life (a PNEUMACTUATOR AT-series rack and pinion unit, for example, is tested to 1,000,000+ cycles) from units that get pulled out of service years early.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-actuator-maintenance-guide-02.webp" alt="Welder repairing pipe work beside a valve installation in a workshop" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Welder repairing pipe work beside a valve installation in a workshop</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>Dirty, wet air is the most common cause of premature actuator wear. A 40 µm filter element at the filter-regulator is the common baseline for shop air; use finer filtration where the OEM calls for it, and size the dryer for your coldest ambient conditions.</li>

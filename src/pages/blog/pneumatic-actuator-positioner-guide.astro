@@ -31,12 +31,20 @@ const props = {
 };
 ---
 
-<Layout title="Pneumatic Actuator Positioner: Working Principle, Types and Selection Guide | PNEUMACTUATOR" description="How a pneumatic actuator positioner works: closed-loop control, pneumatic vs electro-pneumatic vs smart types, 4-20 mA and 3-15 psi signals, 7 selection questions, calibration and common failures.">
+<Layout title="Pneumatic Actuator Positioner: Working Principle, Types and..." description="How a pneumatic actuator positioner works: closed-loop control, pneumatic vs electro-pneumatic vs smart types, 4-20 mA and 3-15 psi signals, 7 selection...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-pneumatic-actuator-positioner-guide-01.webp" alt="Instrumentation panels and valve positioners in a process plant control area" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <p class="text-lg leading-relaxed"><strong>A positioner is the difference between an actuator that opens and closes a valve, and an actuator that holds the valve exactly where your control loop asks it to.</strong> A bare pneumatic actuator fed through a solenoid valve is a two-position device: full open or full closed, with nothing in between worth relying on. Feed the same actuator through a positioner and it becomes a precision throttling device that can park a butterfly valve at 42% open and hold it there against a changing differential pressure, cycle after cycle.</p>
     <p class="text-lg leading-relaxed">This guide covers what a positioner actually does inside the loop, how the classic force-balance and modern smart versions work, the three families you will meet on plant (pneumatic, electro-pneumatic and smart/digital), why a volume booster is not a substitute, the input signals you must match (4-20 mA, 0-10 V, 3-15 psi), and the seven questions that decide which positioner belongs on your actuator. It also covers calibration, the failures that send positioners to the workshop, and the cases where buying a positioner is money wasted.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-pneumatic-actuator-positioner-guide-02.webp" alt="Piping, tubing and instrumentation wall inside a plant" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Piping, tubing and instrumentation wall inside a plant</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>A positioner compares the demanded position (from a controller signal) with the actual stem or shaft position, and adjusts actuator air pressure until the error is zero. It is a closed-loop controller mounted directly on the actuator.</li>

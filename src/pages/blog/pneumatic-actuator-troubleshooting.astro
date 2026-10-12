@@ -36,12 +36,20 @@ const props = {
 };
 ---
 
-<Layout title="Pneumatic Actuator Troubleshooting: 12 Symptoms, Root Causes and Fixes | PNEUMACTUATOR" description="Pneumatic actuator troubleshooting: 12 field symptoms (valve stuck, slow stroke, drift, hunting, leaks, fail-safe failure) with root causes, diagnostic checks and fixes, plus a 10-minute diagnosis sequence.">
+<Layout title="Pneumatic Actuator Troubleshooting: 12 Symptoms, Root Causes..." description="Pneumatic actuator troubleshooting: 12 field symptoms (valve stuck, slow stroke, drift, hunting, leaks, fail-safe failure) with root causes, diagnostic...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-pneumatic-actuator-troubleshooting-01.webp" alt="Pipeline system under inspection during plant commissioning" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <p class="text-lg leading-relaxed"><strong>Most pneumatic actuator failures share the same four root causes: dirty air, wrong pressure, a mechanical issue in the valve, or a problem that was never an actuator problem at all.</strong> When a valve stops moving on a Friday afternoon, the instinct is to blame the actuator and order a replacement. The evidence says otherwise: in most field investigations the actuator is fine and the fault is a clogged silencer, a regulator that drifted, a jammed packing gland, or a solenoid coil that burned out because the enclosure let in water.</p>
     <p class="text-lg leading-relaxed">This guide is a field-ready troubleshooting map for pneumatic actuators: 12 symptoms from "valve does not move at all" to "actuator keeps eating seals", each with the likely root causes in order of probability, the quick checks that separate them in minutes, and the fix. It ends with a 10-minute diagnosis sequence you can run without drawings, and the prevention habits that stop 80% of failures before they start.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-pneumatic-actuator-troubleshooting-02.webp" alt="Field workers servicing valves and vessels at a plant site" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Field workers servicing valves and vessels at a plant site</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>Work the chain in order: air supply → solenoid/positioner → actuator → valve. Most faults live in the first and last links, not the actuator itself.</li>

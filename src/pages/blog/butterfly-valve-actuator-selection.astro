@@ -28,13 +28,21 @@ const props = {
 };
 ---
 
-<Layout title="Pneumatic Actuator for Butterfly Valve: Selection Guide | PNEUMACTUATOR" description="Sizing a pneumatic actuator for a butterfly valve? Covers butterfly valve torque characteristics, concentric vs double vs triple eccentric designs, common torque ranges by DN, safety factors and the accessories you need.">
+<Layout title="Pneumatic Actuator for Butterfly Valve: Selection Guide..." description="Sizing a pneumatic actuator for a butterfly valve? Covers butterfly valve torque characteristics, concentric vs double vs triple eccentric designs, common...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-butterfly-valve-actuator-selection-01.webp" alt="Row of blue pneumatic actuators mounted on automated butterfly valves at a plant" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <!-- Blog Intro 引言 -->
     <p class="text-lg leading-relaxed"><strong>The failure mode is quiet: the actuator stalls at 70 degrees, the butterfly disc never seats, and the line keeps flowing when it should be closed. Undersized actuators on butterfly valves are one of the most common field problems in valve automation — usually because the buyer sized from a torque chart that ignored the valve's pressure class or seat design.</strong> A butterfly valve looks like an easy quarter-turn duty, but its torque curve has a shape that catches people out: the highest figure is usually at the closed position, and a second, smaller peak appears partway through the stroke on many designs. Sizing an actuator for one without understanding the other produces a package that struggles on every cycle.</p>
     <p class="text-lg leading-relaxed">This guide walks through the torque characteristics that define butterfly valve automation, how concentric, double eccentric and triple eccentric designs change the numbers, common torque ranges by valve size, the safety factor practice that keeps packages reliable, and the accessories — limit switches, solenoid valves, positioners — that turn a bare actuator into a working control package. By the end you will be able to read a valve torque sheet and specify a PNEUMACTUATOR package with confidence.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-butterfly-valve-actuator-selection-02.webp" alt="Pneumatic actuator installed on a butterfly valve assembly" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Pneumatic actuator installed on a butterfly valve assembly</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>Butterfly valves are 90° quarter-turn devices: the actuator must deliver its sizing torque at the supply pressure actually available on site, not the catalog pressure.</li>

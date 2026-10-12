@@ -29,12 +29,20 @@ const props = {
 };
 ---
 
-<Layout title="Pneumatic Actuator Valve Sizing: Matching Actuator to Ball Valve | PNEUMACTUATOR" description="How to size a pneumatic actuator for a ball valve: ball valve torque by size and pressure class, floating vs trunnion ball, safety factors, and a complete actuated valve package checklist.">
+<Layout title="Pneumatic Actuator Valve Sizing: Matching Actuator to Ball..." description="How to size a pneumatic actuator for a ball valve: ball valve torque by size and pressure class, floating vs trunnion ball, safety factors, and a complete...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-ball-valve-actuator-sizing-01.webp" alt="Large industrial ball valve in a pipeline installation" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <p class="text-lg leading-relaxed"><strong>An undersized actuator on a ball valve is not a slow failure — it is a valve that stops in mid-travel, a plant that trips on a stuck shutoff, and a site visit to swap hardware that was chosen from the wrong torque column.</strong> Ball valve torque is not a single catalog number: it climbs with valve size, pressure class and seat material, and the breakaway torque you need at the start of the stroke is almost always higher than the torque needed to keep the ball moving. Get the sizing method right and a rack and pinion actuator rated for the job opens and closes a 6-inch ball valve in under a second for years; get it wrong and the same actuator stalls at the worst possible moment.</p>
     <p class="text-lg leading-relaxed">This guide walks through the torque components that make up a ball valve's requirement, the practical difference between floating ball and trunnion-mounted ball designs, indicative torque ranges by size and pressure class, the safety factor margin that separates a reliable package from a marginal one, and the complete checklist to use when you spec a PNEUMACTUATOR actuated ball valve package with a distributor or integrator.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-ball-valve-actuator-sizing-02.webp" alt="Automated valve manifold with actuators and handwheel in a plant" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Automated valve manifold with actuators and handwheel in a plant</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>Ball valve torque has three phases — breakaway (static), running and reseating — and breakaway is the highest of the three, which is why actuator sizing starts from the valve manufacturer's breakaway torque figure.</li>

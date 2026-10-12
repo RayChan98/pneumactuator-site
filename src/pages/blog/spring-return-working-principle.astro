@@ -29,35 +29,20 @@ const props = {
 };
 ---
 
-<Layout title="Spring Return Actuator Working Principle | Fail-Safe Explained | PNEUMACTUATOR" description="How spring return pneumatic actuators work: air stroke vs spring stroke, spring sets and pre-load, FC/FO fail positions, torque curves and spring set sizing for fail-safe valve automation.">
+<Layout title="Spring Return Actuator Working Principle | Fail-Safe..." description="How spring return pneumatic actuators work: air stroke vs spring stroke, spring sets and pre-load, FC/FO fail positions, torque curves and spring set...">
   <BlogPostTemplate {...props}>
     <figure slot="cover" class="overflow-hidden rounded-2xl">
-      <svg viewBox="0 0 560 315" role="img" aria-label="Spring return actuator torque curve over 90 degrees of travel: air stroke torque falls from stroke start to stroke end while spring stroke torque rises, both staying above the valve torque requirement line" class="h-auto w-full">
-        <rect width="560" height="315" rx="16" fill="#14334F" />
-        <text x="280" y="30" text-anchor="middle" fill="#F8FAFC" font-size="15" font-weight="700" font-family="Inter, sans-serif">Spring Return Torque Over 90° Travel</text>
-        <g stroke="#1E3A5F" stroke-width="1">
-          <line x1="80" y1="55" x2="80" y2="245" />
-          <line x1="185" y1="55" x2="185" y2="245" />
-          <line x1="290" y1="55" x2="290" y2="245" />
-          <line x1="395" y1="55" x2="395" y2="245" />
-          <line x1="500" y1="55" x2="500" y2="245" />
-          <line x1="80" y1="245" x2="500" y2="245" />
-        </g>
-        <line x1="80" y1="220" x2="500" y2="220" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="7 5" />
-        <text x="498" y="210" text-anchor="end" fill="#CBD5E1" font-size="12" font-family="Inter, sans-serif">Valve torque requirement</text>
-        <line x1="80" y1="65" x2="500" y2="150" stroke="#1D4ED8" stroke-width="3.5" stroke-linecap="round" />
-        <text x="90" y="55" fill="#60A5FA" font-size="13" font-weight="700" font-family="Inter, sans-serif">Air stroke torque</text>
-        <line x1="80" y1="195" x2="500" y2="110" stroke="#0D9488" stroke-width="3.5" stroke-linecap="round" />
-        <text x="90" y="207" fill="#2DD4BF" font-size="13" font-weight="700" font-family="Inter, sans-serif">Spring stroke torque</text>
-        <text x="80" y="263" fill="#94A3B8" font-size="12" font-family="Inter, sans-serif">0° (fail position)</text>
-        <text x="500" y="263" text-anchor="end" fill="#94A3B8" font-size="12" font-family="Inter, sans-serif">90° (operating position)</text>
-        <text x="290" y="288" text-anchor="middle" fill="#64748B" font-size="12" font-family="Inter, sans-serif">Stroke position →</text>
-      </svg>
+      <img src="/images/blog/blog-spring-return-working-principle-01.webp" alt="Spring return pneumatic actuator mounted on a ball valve in the field" width="1600" height="900" loading="eager" class="w-full h-auto" />
     </figure>
 
     <p class="text-lg leading-relaxed"><strong>A compressor trips at 2 a.m., or a solenoid loses its pilot signal, and the valve in the line has a few seconds to decide what it will do.</strong> If that valve feeds fuel to a burner, protects a pressure vessel, or supplies water to a cooling circuit, "stay where it was" is not a workable answer. The spring return pneumatic actuator is the component that makes the decision without waiting for an operator, a PLC, or even electricity: the moment air pressure falls below the spring force, a set of compressed springs rotates the valve to its fail position — closed or open, whichever the process requires.</p>
     <p class="text-lg leading-relaxed">Also called a single acting actuator, the spring return design is one of the most widely specified fail-safe mechanisms in valve automation. This guide breaks down the working principle in plain engineering terms: the two strokes (air stroke and spring stroke), where the torque actually comes from, how spring sets and pre-load work, how to read a spring return torque curve, how FC and FO fail positions are chosen, and how a spring set is selected for a specific valve.</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-spring-return-working-principle-02.webp" alt="Fail-safe pneumatic actuator installed on outdoor process piping" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Fail-safe pneumatic actuator installed on outdoor process piping</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>A spring return (single acting) actuator uses air for one stroke and compressed springs for the return stroke — the return is automatic on air loss, and the return stroke itself needs no electrical power.</li>

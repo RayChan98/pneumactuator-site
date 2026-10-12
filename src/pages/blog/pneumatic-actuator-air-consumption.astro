@@ -31,12 +31,20 @@ const props = {
 };
 ---
 
-<Layout title="Pneumatic Actuator Air Consumption: How to Calculate It (With Worked Examples) | PNEUMACTUATOR" description="Calculate pneumatic actuator air consumption: cylinder volume, free air conversion at supply pressure, cycle frequency, plus worked examples for rack & pinion and scotch yoke actuators and compressor sizing.">
+<Layout title="Pneumatic Actuator Air Consumption: How to Calculate It (With..." description="Calculate pneumatic actuator air consumption: cylinder volume, free air conversion at supply pressure, cycle frequency, plus worked examples for rack &...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-pneumatic-actuator-air-consumption-01.webp" alt="Compressed air piping and receiver equipment in a factory" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <p class="text-lg leading-relaxed"><strong>Every pneumatic actuator on your plant is quietly spending money every time it cycles — and most plants cannot tell you how much.</strong> A rack and pinion actuator with an 80 mm bore cycling a ball valve 12 times a minute through a 90° stroke draws roughly 15-20 litres of free air per minute at 5.5 bar. Scale that across a hundred valves, add the positioners that bleed air continuously and the leaks nobody has time to chase, and the compressor room is the answer to a question nobody asked: why the energy bill keeps creeping up.</p>
     <p class="text-lg leading-relaxed">This guide gives you the three-step calculation that works for any pneumatic actuator — find the swept volume, convert it to free air at your actual supply pressure, multiply by cycle frequency — with fully worked examples for a rack & pinion actuator on a ball valve and a scotch yoke on a large butterfly valve. It also covers the hidden consumers (solenoid pilots, positioner bleed, leaks), how to turn actuator demand into compressor size, and seven practical ways to cut consumption without touching process reliability.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-pneumatic-actuator-air-consumption-02.webp" alt="Insulated compressed-air ductwork on a plant roof" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Insulated compressed-air ductwork on a plant roof</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>Air consumption = swept volume × (supply pressure in bar absolute ÷ 1.013) × cycles per minute — the result is free air (litres per minute at atmospheric conditions), which is what compressor specs use.</li>

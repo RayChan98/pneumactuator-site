@@ -31,13 +31,21 @@ const props = {
 };
 ---
 
-<Layout title="How to Calculate Pneumatic Actuator Torque: A Step-by-Step Guide | PNEUMACTUATOR" description="How to calculate pneumatic actuator torque: valve breakaway, running, seating and dynamic torque, safety factors of 1.3-2.0, supply pressure derating, plus three fully worked sizing examples.">
+<Layout title="How to Calculate Pneumatic Actuator Torque: A Step-by-Step..." description="How to calculate pneumatic actuator torque: valve breakaway, running, seating and dynamic torque, safety factors of 1.3-2.0, supply pressure derating...">
   <BlogPostTemplate {...props}>
+    <figure slot="cover" class="overflow-hidden rounded-2xl">
+      <img src="/images/blog/blog-actuator-torque-calculation-01.webp" alt="Heavy-duty pneumatic actuator installed on a pipeline valve" width="1600" height="900" loading="eager" class="w-full h-auto" />
+    </figure>
     <!-- Blog Intro 引言 -->
     <p class="text-lg leading-relaxed"><strong>Most actuator failures are not actuator failures at all — they are sizing errors that surface weeks after installation.</strong> A ball valve that needs 60 N·m to break open, matched with an actuator rated for 55 N·m at the plant's 5.5 bar supply, will stall partway through its first few hundred cycles. The classic symptom is a valve that opens fine in the workshop on a bench regulator at 6 bar, then refuses to move on the line where the real supply sags to 5 bar, where packing has already bedded in, and where the media has left a thin scale on the ball. By then the line is down, the maintenance crew is swapping actuators, and the cost of the mistake is measured in hours of lost production, not in the price of the actuator.</p>
     <p class="text-lg leading-relaxed">This guide walks through what valve torque actually is, the four torque sources a quarter-turn valve presents (breakaway, running, seating and dynamic), where the numbers come from, how safety factors work in practice (1.3–1.5 for general duty, 1.5–2.0 for safety-critical service), the core sizing formula, and three fully worked examples with real arithmetic. By the end you will be able to take a valve data sheet and a compressor-room pressure gauge and size a pneumatic actuator with confidence — and know exactly what to send to your supplier so they cannot undersize you.</p>
     <p class="mt-4 text-lg font-semibold text-brand-blue">Keep reading for more!</p>
 
+
+    <figure class="my-10 overflow-hidden rounded-2xl border border-slate-200">
+      <img src="/images/blog/blog-actuator-torque-calculation-02.webp" alt="Operator checking torque on a field-mounted valve actuator" width="1200" height="675" loading="eager" class="w-full h-auto" />
+      <figcaption class="bg-slate-50 px-4 py-2.5 text-sm text-slate-500">Operator checking torque on a field-mounted valve actuator</figcaption>
+    </figure>
     <h2 id="snapshot">The Snapshot</h2>
     <ul>
       <li>Required actuator torque = peak valve torque × safety factor. Peak valve torque is the largest of the breakaway, running, seating and dynamic torque values — not the average.</li>

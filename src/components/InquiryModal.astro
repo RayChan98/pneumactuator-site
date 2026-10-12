@@ -1,5 +1,6 @@
 ---
 import { ui } from '../i18n/ui';
+import { SITE } from '../data/site';
 const lang = Astro.url.pathname.startsWith('/es') ? 'es' : 'en';
 const D = ui[lang];
 
@@ -22,7 +23,7 @@ const connectOptions = ['NAMUR Solenoid', 'Limit Switch Box', 'Positioner', 'Man
 const roleOptions = ['End User', 'Installer / Integrator', 'Distributor / Wholesaler', 'OEM / Brand Owner', 'Other'];
 ---
 
-<div id="inquiry-modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4" data-quote-modal aria-hidden="true">
+<div id="inquiry-modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4" data-quote-modal data-fallback-email={SITE.email} aria-hidden="true">
   <!-- 遮罩 -->
   <div class="absolute inset-0 bg-navy-950/70 backdrop-blur-sm" data-quote-close></div>
 
@@ -103,13 +104,14 @@ const roleOptions = ['End User', 'Installer / Integrator', 'Distributor / Wholes
         Send Inquiry →
       </button>
       <p id="modal-form-status" class="mt-3 hidden text-sm font-medium"></p>
-      <p class="mt-3 text-center text-xs text-slate-400">Prefer direct contact? Email <a href="mailto:cj226144@gmail.com" class="text-brand-blue hover:underline">cj226144@gmail.com</a> or WhatsApp <a href="https://wa.me/8613710860663" target="_blank" rel="noopener" class="text-brand-blue hover:underline">+86 137 1086 0663</a></p>
+      <p class="mt-3 text-center text-xs text-slate-400">Prefer direct contact? Email <a href={`mailto:${SITE.email}`} class="text-brand-blue hover:underline">{SITE.email}</a> or WhatsApp <a href={`https://wa.me/${SITE.waNumber}`} target="_blank" rel="noopener" class="text-brand-blue hover:underline">{SITE.phone}</a></p>
     </form>
   </div>
 </div>
 
 <script>
   const modal = document.getElementById('inquiry-modal');
+  const fallbackEmail = modal?.dataset.fallbackEmail || '';
   const openers = document.querySelectorAll('[data-quote-open]');
   const closers = modal ? modal.querySelectorAll('[data-quote-close]') : [];
   const form = document.getElementById('inquiry-form');
@@ -148,13 +150,13 @@ const roleOptions = ['End User', 'Installer / Integrator', 'Distributor / Wholes
           window.location.href = '/thank-you/';
         } else {
           statusEl.textContent = data.error === 'mail_not_configured'
-            ? 'Service temporarily unavailable. Please email us directly at cj226144@gmail.com.'
-            : 'Something went wrong. Please email us directly at cj226144@gmail.com.';
+            ? 'Service temporarily unavailable. Please email us directly at ' + fallbackEmail + '.'
+            : 'Something went wrong. Please email us directly at ' + fallbackEmail + '.';
           statusEl.classList.remove('hidden');
           statusEl.classList.add('text-red-600');
         }
       } catch (err) {
-        statusEl.textContent = 'Network error. Please email us directly at cj226144@gmail.com.';
+        statusEl.textContent = 'Network error. Please email us directly at ' + fallbackEmail + '.';
         statusEl.classList.remove('hidden');
         statusEl.classList.add('text-red-600');
       }

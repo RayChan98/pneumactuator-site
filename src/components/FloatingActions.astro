@@ -1,5 +1,6 @@
 ---
 import { ui } from '../i18n/ui';
+import { SITE } from '../data/site';
 const lang = Astro.url.pathname.startsWith('/es') ? 'es' : 'en';
 const D = ui[lang];
 
@@ -13,10 +14,10 @@ interface Props {
   email?: string;
 }
 const {
-  whatsappNumber = '8613710860663',
-  phoneDisplay = '+86 137 1086 0663',
+  whatsappNumber = SITE.waNumber,
+  phoneDisplay = SITE.phone,
   welcomeText = "Hello PNEUMACTUATOR! I'm interested in your pneumatic valve actuators. Could you send me the catalog and lead time?",
-  email = 'cj226144@gmail.com',
+  email = SITE.email,
 } = Astro.props;
 
 const waLink = `https://wa.me/$whatsappNumber?text=${encodeURIComponent(welcomeText)}`;

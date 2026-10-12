@@ -1,5 +1,6 @@
 ---
 import { ui } from '../i18n/ui';
+import { SITE } from '../data/site';
 const lang = 'en';
 const D = ui[lang];
 
@@ -56,9 +57,9 @@ const companyLinks = [
       <div>
         <h3 class="text-sm font-semibold uppercase tracking-wider text-white">{D.getInTouch}</h3>
         <ul class="mt-4 space-y-2 text-sm">
-          <li>Email: cj226144@gmail.com</li>
-          <li>WhatsApp: +86 137 1086 0663</li>
-          <li>Guangzhou, China</li>
+          <li>Email: {SITE.email}</li>
+          <li>WhatsApp: {SITE.phone}</li>
+          <li>{SITE.address}</li>
         </ul>
         <button type="button" data-quote-open
           class="mt-4 inline-block rounded-lg bg-cta-orange px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
